@@ -1,4 +1,12 @@
+/* TRABAJO PRACTICO INTEGRADOR
+INTEGRANTES:
+Bojanovich Hannah
+Brycki Selene
+Gamarra Kiara
+Szevaga Emanuel 
+Viana Matias*/
 USE financiamiento_ra;
+/*CREACION DE TABLAS*/
 CREATE TABLE `Sucursal` (
     `id_sucursal` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     `nombre_sucursal` VARCHAR(255),
