@@ -1,4 +1,6 @@
+CREATE DATABASE IF NOT EXISTS financiamiento_ra;
 USE financiamiento_ra;
+
 CREATE TABLE sucursal
 (
     id_sucursal           INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -50,7 +52,7 @@ CREATE TABLE cliente
     nombre_cliente        VARCHAR(255),
     apellido_cliente      VARCHAR(255),
     documento             VARCHAR(255),
-    tipo_de_persona       ENUM ('juridica', 'fisica'),
+    tipo_de_persona       ENUM ('jurídica', 'física'),
     ingreso_declarado     DECIMAL,
     domicilio             VARCHAR(255),
     email_cliente         VARCHAR(255),
@@ -99,7 +101,7 @@ CREATE TABLE credito
     creado_por            VARCHAR(255),
     modificado_por        VARCHAR(255),
     FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente),
-    FOREIGN KEY (id_producto) REFERENCES producto (id_producto),
+    FOREIGN KEY (id_producto) REFERENCES producto_financiero (id_producto_financiero),
     FOREIGN KEY (id_solicitud) REFERENCES solicitud (id_solicitud),
     FOREIGN KEY (id_credito_padre) REFERENCES credito (id_credito)
 );
@@ -153,7 +155,7 @@ CREATE TABLE pago
 CREATE TABLE metodo_de_pago
 (
     id_metodo             INTEGER UNIQUE PRIMARY KEY                    NOT NULL AUTO_INCREMENT,
-    metodo                ENUM ('Efectivo', 'Trajeta', 'Transferencia') NOT NULL,
+    metodo                ENUM ('Efectivo', 'Tarjeta', 'Transferencia') NOT NULL,
     fecha_de_alta         TIMESTAMP,
     fecha_de_baja         TIMESTAMP,
     fecha_de_modificacion TIMESTAMP,
