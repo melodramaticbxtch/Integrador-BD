@@ -1,58 +1,67 @@
 USE financiamiento_ra;
-CREATE TABLE ´Sucursal´ (
-	id_sucursal int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-	nombre_sucursal varchar(255),
-	localidad varchar(255),
-	provincia varchar(255),
-	telefono_sucursal varchar(255), 
-	direccion varchar(255), 
-	fecha_de_alta timestamp, 
-	fecha_de_baja timestamp,
-	fecha_de_modificacion timestamp,
-	creado_por varchar(255), 
-	modificado_por varchar (255)
+CREATE TABLE `Sucursal` (
+    `id_sucursal` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    `nombre_sucursal` VARCHAR(255),
+    `localidad` VARCHAR(255),
+    `provincia` VARCHAR(255),
+    `telefono_sucursal` VARCHAR(255), 
+    `direccion` VARCHAR(255), 
+    `fecha_de_alta` TIMESTAMP, 
+    `fecha_de_baja` TIMESTAMP,
+    `fecha_de_modificacion` TIMESTAMP,
+    `creado_por` VARCHAR(255), 
+    `modificado_por` VARCHAR(255)
 );
-CREATE TABLE ´Garante (
-	id_garante int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nombre varchar(255),
-	apellido varchar(255),
-	DNI_garante varchar(255),
-	fecha_de_alta timestamp,
-	fecha_de_baja timestamp,
-	fecha_de_mdificacion timestamp,
-	creado_po varchar(255),
-	modificado_por varchar(255),
-    FOREIGN KEY (id_solicitud) REFERENCES Solicitud(id_solicitud)
-    );
-CREATE TABLE ´Solicitud´ (
-	id_solicitud int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	monto decimal,
-	destino varchar(255), 
-	fecha_solictud timestamp,
-	estado boolean,
-	motivo_estado varchar(255),
-	fecha_de_alta timestamp, 
-	fecha_de_baja timestamp,
-	fecha_de_modificacion timestamp,
-	crado_por varchar(255),
-	modificado_por varchar(255)
+
+CREATE TABLE `Garante` (
+    `id_garante` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(255),
+    `apellido` VARCHAR(255),
+    `DNI_garante` VARCHAR(255),
+    `fecha_de_alta` TIMESTAMP,
+    `fecha_de_baja` TIMESTAMP,
+    `fecha_de_modificacion` TIMESTAMP,
+    `creado_por` VARCHAR(255),
+    `modificado_por` VARCHAR(255),
+    `id_solicitud` INT,
+    FOREIGN KEY (`id_solicitud`) REFERENCES `Solicitud`(`id_solicitud`)
 );
-CREATE TABLE ´Cliente´(
-	id_cliente int,
-	nombre_cliente varchar(255),
-	apellido_cliente varchar(255,
-	documento varchar(255),  
-	tipo_de_persona enum ('juridica7', ''),
-	ingreso_declarado decimal,
-	domicilio varchar(255),
-	email_cliente varchar
-	telefono_cliente varchar [ not null ]
-	fecha_de_alta timestamp [ not null ]
-	fecha_de_baja timestamp [ not null ]
-	fecha_de_modificacion timestamp [ not null ]
-	creado_por varchar [ not null ]
-	modificado_por varchar [ not null ]
-}
+
+CREATE TABLE `Solicitud` (
+    `id_solicitud` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `monto` DECIMAL,
+    `destino` VARCHAR(255), 
+    `fecha_solicitud` TIMESTAMP,
+    `estado` BOOLEAN,
+    `motivo_estado` VARCHAR(255),
+    `fecha_de_alta` TIMESTAMP, 
+    `fecha_de_baja` TIMESTAMP,
+    `fecha_de_modificacion` TIMESTAMP,
+    `creado_por` VARCHAR(255),
+    `modificado_por` VARCHAR(255)
+);
+
+CREATE TABLE `Cliente` (
+    `id_cliente` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `nombre_cliente` VARCHAR(255),
+    `apellido_cliente` VARCHAR(255),
+    `documento` VARCHAR(255),  
+    `tipo_de_persona` ENUM('juridica', 'fisica'),
+    `ingreso_declarado` DECIMAL,
+    `domicilio` VARCHAR(255),
+    `email_cliente` VARCHAR(255),
+    `telefono_cliente` VARCHAR(255),
+    `fecha_de_alta` TIMESTAMP,
+    `fecha_de_baja` TIMESTAMP,
+    `fecha_de_modificacion` TIMESTAMP,
+    `creado_por` VARCHAR(255),
+    `modificado_por` VARCHAR(255)
+);
+
+    
+CREATE TABLE `Producto_campana` (
+
+
 
 CREATE TABLE `Producto_financiero` (
 `id_producto_financiero` integer UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -77,7 +86,6 @@ CREATE TABLE Credito (
 
 -- Clave foránea autorreferenciada (crédito padre)
 `id_credito_padre` int not null,
-
 `monto_otorgado` decimal,
 `fecha_inicio` timestamp,
 `fecha_fin` timestamp,
