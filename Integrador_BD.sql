@@ -99,7 +99,7 @@ CREATE TABLE credito
     creado_por            VARCHAR(255),
     modificado_por        VARCHAR(255),
     FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente),
-    FOREIGN KEY (id_producto) REFERENCES producto_financiero (id_producto_financiero),
+    FOREIGN KEY (id_producto) REFERENCES producto (id_producto),
     FOREIGN KEY (id_solicitud) REFERENCES solicitud (id_solicitud),
     FOREIGN KEY (id_credito_padre) REFERENCES credito (id_credito)
 );
