@@ -1,10 +1,10 @@
 USE financiamiento_ra;
-CREATE TABLE ´Sucursal´ (
+CREATE TABLE `Sucursal` (
 	id_sucursal INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nombre_sucursal VARCHAR(255),
 	localidad VARCHAR(255),
 	provincia VARCHAR(255),
-	telefono_sucursal VARCHAR(255),
+		telefono_sucursal VARCHAR(20),
 	direccion VARCHAR(255),
 	fecha_de_alta TIMESTAMP,
 	fecha_de_baja TIMESTAMP,
