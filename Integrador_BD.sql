@@ -7,7 +7,7 @@ Szevaga Emanuel
 Viana Matias*/
 USE financiamiento_ra;
 /*CREACION DE TABLAS*/
-CREATE TABLE `Sucursal` (
+/*CREATE TABLE `Sucursal` (
     `id_sucursal` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     `nombre_sucursal` VARCHAR(255),
     `localidad` VARCHAR(255),
@@ -199,4 +199,21 @@ CREATE TABLE `Metodo_de_pago` (
     `fecha_de_modificacion` TIMESTAMP,
     `creado_por` VARCHAR(255),
     `modificado_por` VARCHAR(255)
-);
+);*/
+
+/* Creacion de usuarios por nivel administrativo*/
+/*Los ejecutivos y jefes pueden hacer todo*/
+CREATE USER 'admin_ejecutivos'@'%' IDENTIFIED BY 'Admin123!';
+GRANT ALL PRIVILEGES ON financiamiento_ra.* TO 'admin_ejecutivos'@'%' WITH GRANT OPTION;
+
+/*Gerentes o empleados con cargos especiales pueden insertar datos*/
+CREATE USER 'gerentes_analistas'@'%' IDENTIFIED BY 'Analista123!';
+GRANT SELECT, INSERT, UPDATE 
+ON financiamiento_ra.* 
+TO 'gerentes_analistas'@'%';
+
+/*Empleados nuevos o con cargos bajos solo pueden leer*/
+CREATE USER 'empleados'@'%' IDENTIFIED BY 'Consulta123!';
+GRANT SELECT 
+ON financiamiento_ra.* 
+TO 'empleados'@'%';
