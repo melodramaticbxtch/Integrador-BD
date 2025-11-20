@@ -208,3 +208,147 @@ INSERT INTO Cliente (nombre_cliente, apellido_cliente, DNI_cliente, tipo_de_pers
 ('Bodega Los Aromas S.A.', NULL, '30719012345', 'juridica', 1300000.00, 'Mendoza 404', 'bodega.a@mail.com', '3434123456', NOW(), NULL, NULL, 59, NULL),
 ('Frigorífico del Litoral', NULL, '33720123456', 'juridica', 1000000.00, 'San Martín 505', 'frigo.lito@mail.com', '3777789012', NOW(), NULL, NULL, 60, NULL);
 
+/*PRODUCTO FINANCIERO*/
+INSERT INTO Producto_financiero (nombre_producto_financiero, descripcion, limite_max, limite_min, requisito, tasa_base, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por) VALUES
+-- Bloque 1: Préstamos Personales (id 1-10)
+('Préstamo Express', 'Crédito rápido de libre destino', 300000.00, 10000.00, 'Ingreso fijo 6 meses, Score > 550', 0.55, NOW(), NULL, NULL, '54', NULL),
+('Préstamo Coche Usado', 'Financiación para compra de vehículos usados', 1500000.00, 50000.00, 'Antigüedad laboral 1 año, titularidad vehículo', 0.40, NOW(), NULL, NULL, '50', NULL),
+('Préstamo Estudios', 'Crédito para educación y capacitación', 500000.00, 20000.00, 'Certificado de inscripción, ingresos comprobables', 0.65, NOW(), NULL, NULL, '46', NULL),
+('Préstamo Consolidación', 'Para unificar deudas existentes', 800000.00, 100000.00, 'Análisis de deuda actual, Score > 600', 0.48, NOW(), NULL, NULL, '42', NULL),
+('Préstamo Viajes', 'Crédito para paquetes turísticos y pasajes', 150000.00, 15000.00, 'Reserva de viaje, sin morosidad', 0.70, NOW(), NULL, NULL, '38', NULL),
+('Préstamo Salud', 'Crédito para tratamientos médicos y cirugías', 400000.00, 25000.00, 'Presupuesto médico, ingresos estables', 0.58, NOW(), NULL, NULL, '34', NULL),
+('Préstamo Joven', 'Crédito inicial para nuevos clientes', 100000.00, 5000.00, 'Edad 18-25, recibo de sueldo', 0.75, NOW(), NULL, NULL, '30', NULL),
+('Préstamo Digital', 'Solicitud y desembolso 100% online', 200000.00, 5000.00, 'Cuenta bancaria activa, validación biométrica', 0.60, NOW(), NULL, NULL, '26', NULL),
+('Préstamo Verde', 'Para reformas y equipos de eficiencia energética', 1000000.00, 100000.00, 'Presupuesto de obra/equipos, Score > 650', 0.45, NOW(), NULL, NULL, '22', NULL),
+('Préstamo Pyme', 'Crédito para pequeños negocios unipersonales', 2500000.00, 50000.00, 'Monotributo/Autónomo 2 años, proyección de negocio', 0.35, NOW(), NULL, NULL, '21', NULL),
+
+-- Bloque 2: Hipotecarios y Garantizados (id 11-20)
+('Hipotecario Vivienda Única', 'Crédito para adquisición de primera vivienda', 30000000.00, 500000.00, 'Garantía hipotecaria, 20% ahorro propio', 0.25, NOW(), NULL, NULL, '20', NULL),
+('Hipotecario Refacción', 'Préstamo para ampliar o refaccionar vivienda', 5000000.00, 100000.00, 'Garantía hipotecaria, planos aprobados', 0.28, NOW(), NULL, NULL, '8', NULL),
+('Hipotecario Lote', 'Financiación para compra de terrenos', 8000000.00, 200000.00, 'Tasación de lote, ingresos altos', 0.30, NOW(), NULL, NULL, '4', NULL),
+('Crédito Prendario Nuevo', 'Financiación para vehículos 0km (Prenda)', 5000000.00, 100000.00, 'Prenda sobre el vehículo, seguro total', 0.38, NOW(), NULL, NULL, '61', NULL),
+('Préstamo con Garantía Real', 'Crédito respaldado por inmueble (no hipotecario)', 10000000.00, 500000.00, 'Garantía real, sin gravámenes', 0.32, NOW(), NULL, NULL, '57', NULL),
+('Préstamo con Garantía Fiduciaria', 'Crédito respaldado por fondo de garantía', 2000000.00, 200000.00, 'Adhesión a fideicomiso, aporte inicial', 0.42, NOW(), NULL, NULL, '53', NULL),
+('Hipotecario Uva', 'Crédito hipotecario con ajuste por inflación', 25000000.00, 300000.00, 'Relación cuota-ingreso estricta', 0.15, NOW(), NULL, NULL, '49', NULL),
+('Préstamo Automático', 'Crédito preaprobado por sistema', 100000.00, 5000.00, 'Límite basado en historial de cliente', 0.68, NOW(), NULL, NULL, '45', NULL),
+('Crédito para Adquisición de Maquinaria', 'Financiación de equipos productivos (Garantía Maquinaria)', 4000000.00, 500000.00, 'Prenda sobre la maquinaria, plan de negocios', 0.36, NOW(), NULL, NULL, '41', NULL),
+('Préstamo para Inquilinos', 'Garantía para alquiler (sustituye fianza)', 200000.00, 10000.00, 'Contrato de alquiler, 3 meses de ingresos', 0.50, NOW(), NULL, NULL, '37', NULL),
+
+-- Bloque 3: Productos Empresariales y Líneas de Crédito (id 21-30)
+('Línea de Crédito Rotativa', 'Fondo revolvente para capital de trabajo', 5000000.00, 50000.00, 'Balance 2 años, sujeto a revisión trimestral', 0.30, NOW(), NULL, NULL, '37', NULL),
+('Descuento de Cheques', 'Anticipo de fondos por cheques de terceros', 10000000.00, 100000.00, 'Carpeta crediticia comercial, historial con el banco', 0.20, NOW(), NULL, NULL, '33', NULL),
+('Préstamo Agropecuario', 'Para siembra, cosecha o inversión rural', 15000000.00, 500000.00, 'Título de propiedad rural, plan de explotación', 0.22, NOW(), NULL, NULL, '29', NULL),
+('Leasing de Equipamiento', 'Alquiler con opción a compra de activos fijos', 8000000.00, 100000.00, 'Evaluación de flujo de caja, contrato con proveedor', 0.24, NOW(), NULL, NULL, '25', NULL),
+('Comercio Exterior Pre-financiación', 'Crédito para insumos de exportación', 20000000.00, 1000000.00, 'Contrato de exportación, historial de operaciones', 0.18, NOW(), NULL, NULL, '19', NULL),
+('Cuenta Corriente con Acuerdo', 'Límite de descubierto en cuenta corriente', 2000000.00, 50000.00, 'Promedio de saldos, Score bancario alto', 0.40, NOW(), NULL, NULL, '18', NULL),
+('Factoring sin Recurso', 'Venta de facturas a la entidad', 10000000.00, 500000.00, 'Clientes A+ en cartera, límite por deudor', 0.26, NOW(), NULL, NULL, '17', NULL),
+('Garantía Bancaria', 'Emisión de avales para licitaciones o contratos', 5000000.00, 50000.00, 'Contragarantía (hipoteca/prenda), solidez financiera', 0.15, NOW(), NULL, NULL, '7', NULL),
+('Préstamo Turismo', 'Inversión en hotelería y servicios turísticos', 12000000.00, 500000.00, 'Habilitación municipal, proyección de ocupación', 0.33, NOW(), NULL, NULL, '3', NULL),
+('Crédito Puente Constructor', 'Financiación de etapas de construcción', 50000000.00, 5000000.00, 'Permisos de obra, venta mínima de unidades', 0.19, NOW(), NULL, NULL, '60', NULL),
+
+-- Bloque 4: Variaciones y Refuerzos (id 31-60)
+-- Variaciones de Préstamos Personales (id 31-40)
+('Préstamo Express Plus', 'Versión con límite ampliado y plazo mayor', 500000.00, 50000.00, 'Ingreso fijo 1 año, Score > 600', 0.50, NOW(), NULL, NULL, '52', NULL),
+('Préstamo Consolidación Gold', 'Para unificar deudas grandes con mejor tasa', 1200000.00, 200000.00, 'Excelente historial, sin morosidad en 2 años', 0.45, NOW(), NULL, NULL, '48', NULL),
+('Préstamo Auto Clásico', 'Financiación de vehículos de colección', 800000.00, 100000.00, 'Tasación oficial, seguro específico', 0.42, NOW(), NULL, NULL, '44', NULL),
+('Préstamo Estudios Postgrado', 'Crédito a largo plazo para posgrados', 800000.00, 100000.00, 'Aceptación en universidad, codeudor', 0.52, NOW(), NULL, NULL, '40', NULL),
+('Préstamo Viajes Premium', 'Para viajes de lujo o larga estadía', 300000.00, 50000.00, 'Ingresos comprobables > 500k', 0.65, NOW(), NULL, NULL, '36', NULL),
+('Préstamo Renovación Hogar', 'Para refacciones menores y decoración', 250000.00, 10000.00, 'Ingresos fijos, antigüedad 6 meses', 0.68, NOW(), NULL, NULL, '32', NULL),
+('Préstamo Emprendedor', 'Lanzamiento de proyecto inicial', 300000.00, 20000.00, 'Plan de negocio básico, tutoría', 0.78, NOW(), NULL, NULL, '28', NULL),
+('Préstamo Cajas de Ahorro', 'Garantizado por plazos fijos o ahorros', 1000000.00, 100000.00, 'Constitución de garantía líquida del 120%', 0.10, NOW(), NULL, NULL, '24', NULL),
+('Préstamo de Anticipo de Haberes', 'Adelanto de sueldo automático', 50000.00, 1000.00, 'Convenio de nómina, antigüedad 3 meses', 0.85, NOW(), NULL, NULL, '16', NULL),
+('Préstamo RSE', 'Para proyectos de impacto social/ambiental', 700000.00, 50000.00, 'Certificación de proyecto, bajo riesgo', 0.40, NOW(), NULL, NULL, '15', NULL),
+
+-- Variaciones de Hipotecarios/Empresariales (id 41-50)
+('Hipotecario Cliente Preferencial', 'Tasa reducida para clientes con historial', 35000000.00, 1000000.00, 'Cliente Platino/VIP, historial 5 años', 0.23, NOW(), NULL, NULL, '14', NULL),
+('Línea de Crédito Pyme Flexible', 'Límite dinámico ajustado al flujo de caja', 7000000.00, 100000.00, 'Flujo de caja positivo, garantía prendaria', 0.28, NOW(), NULL, NULL, '10', NULL),
+('Crédito Prendario Motos', 'Financiación de motos nuevas y usadas', 800000.00, 30000.00, 'Prenda sobre moto, seguro obligatorio', 0.55, NOW(), NULL, NULL, '6', NULL),
+('Fianza de Alquiler Comercial', 'Aval para locales y oficinas', 500000.00, 20000.00, 'Balance 1 año, contrato de alquiler comercial', 0.45, NOW(), NULL, NULL, '2', NULL),
+('Crédito para Exportación Directa', 'Financiación específica para grandes exportadores', 30000000.00, 2000000.00, 'Facturación anual > 50MM, carta de crédito', 0.16, NOW(), NULL, NULL, '59', NULL),
+('Préstamo Capitalización Rural', 'Inversión a largo plazo en tecnología rural', 20000000.00, 1000000.00, 'Proyecto de inversión a 5 años, garantía real', 0.20, NOW(), NULL, NULL, '55', NULL),
+('Hipotecario Segunda Vivienda', 'Para inversión inmobiliaria o casa de veraneo', 15000000.00, 500000.00, 'Propiedad libre de deuda, ingresos dobles', 0.35, NOW(), NULL, NULL, '51', NULL),
+('Préstamo Refuerzo', 'Segundo crédito para clientes con historial excelente', 100000.00, 5000.00, 'Sin atrasos en el crédito vigente', 0.62, NOW(), NULL, NULL, '47', NULL),
+('Descuento de E-Cheqs', 'Digitalización del descuento de valores', 5000000.00, 50000.00, 'Cuenta comitente activa, firma digital', 0.23, NOW(), NULL, NULL, '43', NULL),
+('Garantía de Cumplimiento', 'Aval para asegurar finalización de obras', 10000000.00, 1000000.00, 'Capacidad de endeudamiento probada', 0.17, NOW(), NULL, NULL, '39', NULL),
+
+-- Nuevos Productos (id 51-60)
+('Microcrédito', 'Préstamo social para emprendedores de bajos ingresos', 50000.00, 1000.00, 'Validación comunitaria/ONG, plan simple', 0.95, NOW(), NULL, NULL, '35', NULL),
+('Préstamo para Franquicias', 'Financiación de costos iniciales de franquicias', 1000000.00, 100000.00, 'Contrato de franquicia, viabilidad de negocio', 0.40, NOW(), NULL, NULL, '31', NULL),
+('Línea de Comercio Electrónico', 'Capital de trabajo para plataformas online', 2000000.00, 50000.00, 'Historial de ventas online, integración API', 0.38, NOW(), NULL, NULL, '27', NULL),
+('Préstamo para Honorarios', 'Para profesionales que cobran por honorarios', 400000.00, 20000.00, 'Matrícula profesional, 1 año de ejercicio', 0.55, NOW(), NULL, NULL, '23', NULL),
+('Hipotecario Dólar Link', 'Préstamo en pesos ajustado al tipo de cambio oficial', 20000000.00, 500000.00, 'Ingresos indexados al dólar o altos', 0.20, NOW(), NULL, NULL, '13', NULL),
+('Préstamo para Tecnología', 'Compra de hardware y software profesional', 600000.00, 30000.00, 'Factura proforma, ingresos estables', 0.50, NOW(), NULL, NULL, '12', NULL),
+('Crédito para Inclusión Financiera', 'Productos con menores requisitos para no bancarizados', 80000.00, 5000.00, 'Verificación de identidad simple, límite inicial bajo', 1.10, NOW(), NULL, NULL, '11', NULL),
+('Préstamo para Bodas y Eventos', 'Financiación de fiestas y grandes eventos', 500000.00, 50000.00, 'Presupuesto de proveedores, 1 año de antigüedad', 0.60, NOW(), NULL, NULL, '9', NULL),
+('Línea de Inversión Fija', 'Para compra de activos fijos de empresas', 15000000.00, 500000.00, 'Proyecto de inversión detallado, garantía mixta', 0.25, NOW(), NULL, NULL, '5', NULL),
+('Préstamo para Jubilados', 'Crédito con descuento de cuota en el haber', 300000.00, 10000.00, 'Último recibo de haber, sin morosidad previsional', 0.50, NOW(), NULL, NULL, '1', NULL);
+
+/*TABLA SOLICITUD*/
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, puntaje_riesgo,
+fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(150000.00, 'Compra de vehículo', '2025-11-01 10:00:00', TRUE, NULL, 2,'2025-11-01 10:00:00', NULL, NULL, 1, NULL, 1),
+(220000.00, 'Refacción de vivienda', '2025-11-03 11:30:00', FALSE,'Falta de documentación', 5,'2025-11-03 11:30:00', NULL, NULL, 2, NULL, 2),
+(95000.00, 'Pago de deudas', '2025-11-05 09:15:00', TRUE, NULL, 1,'2025-11-05 09:15:00', NULL, NULL, 3, NULL, 3),
+(350000.00, 'Capital de trabajo', '2025-11-07 14:45:00', TRUE, NULL, 3,'2025-11-07 14:45:00', NULL, NULL, 4, NULL, 4),
+(80000.00, 'Compra de herramientas', '2025-11-09 08:20:00', FALSE,'Historial crediticio negativo', 4,'2025-11-09 08:20:00', NULL, NULL, 5, NULL, 5),
+(180000.00, 'Inversión en negocio', '2025-11-11 13:00:00', TRUE, NULL, 1,'2025-11-11 13:00:00', NULL, NULL, 6, NULL, 6),
+(120000.00, 'Gastos médicos', '2025-11-13 16:10:00', TRUE, NULL, 2,'2025-11-13 16:10:00', NULL, NULL, 7, NULL, 7),
+(280000.00, 'Compra de maquinaria', '2025-11-15 10:30:00', FALSE,'Excede capacidad de pago', 4,'2025-11-15 10:30:00', NULL, NULL, 8, NULL, 8),
+(65000.00, 'Estudios universitarios', '2025-11-17 12:00:00', TRUE, NULL, 3,'2025-11-17 12:00:00', NULL, NULL, 9, NULL, 9),
+(160000.00, 'Mudanza y alquiler', '2025-11-19 15:45:00', TRUE, NULL, 2,'2025-11-19 15:45:00', NULL, NULL, 10, NULL, 10);
+INSERT INTO Solicitud VALUES
+(200000.00, 'Compra de insumos', '2025-11-21 09:00:00', TRUE, NULL, 1,'2025-11-21 09:00:00', NULL, NULL, 11, NULL, 11),
+(175000.00, 'Reparación de maquinaria', '2025-11-22 10:30:00', FALSE,'Cliente en mora', 4,'2025-11-22 10:30:00', NULL, NULL, 12, NULL, 12),
+(95000.00, 'Gastos personales', '2025-11-23 11:45:00', TRUE, NULL, 3,'2025-11-23 11:45:00', NULL, NULL, 13, NULL, 13),
+(300000.00, 'Ampliación de local', '2025-11-24 14:15:00', TRUE, NULL, 2,'2025-11-24 14:15:00', NULL, NULL, 14, NULL, 14),
+(85000.00, 'Compra de mobiliario', '2025-11-25 08:50:00', FALSE,'Documentación vencida', 5,'2025-11-25 08:50:00', NULL, NULL, 15, NULL, 15),
+(190000.00, 'Viaje de negocios', '2025-11-26 13:20:00', TRUE, NULL, 1,'2025-11-26 13:20:00', NULL, NULL, 16, NULL, 16),
+(140000.00, 'Renovación de flota', '2025-11-27 15:10:00', TRUE, NULL, 3,'2025-11-27 15:10:00', NULL, NULL, 17, NULL, 17),
+(310000.00, 'Compra de stock', '2025-11-28 09:40:00', FALSE,'Inconsistencias en ingresos', 4,'2025-11-28 09:40:00', NULL, NULL, 18, NULL, 18),
+(70000.00, 'Mudanza', '2025-11-29 12:30:00', TRUE, NULL, 2,'2025-11-29 12:30:00', NULL, NULL, 19, NULL, 19),
+(165000.00, 'Estudios de posgrado', '2025-11-30 16:00:00', TRUE, NULL, 1,'2025-11-30 16:00:00', NULL, NULL, 20, NULL, 20);
+INSERT INTO Solicitud VALUES
+(185000.00, 'Compra de equipamiento', '2025-12-01 09:00:00', TRUE, NULL, 2,'2025-12-01 09:00:00', NULL, NULL, 21, NULL, 21),
+(210000.00, 'Reforma de oficina', '2025-12-02 10:30:00', FALSE,'Ingresos insuficientes', 5,'2025-12-02 10:30:00', NULL, NULL, 22, NULL, 22),
+(98000.00, 'Gastos médicos', '2025-12-03 11:45:00', TRUE, NULL, 1,'2025-12-03 11:45:00', NULL, NULL, 23, NULL, 23),
+(320000.00, 'Expansión comercial', '2025-12-04 14:15:00', TRUE, NULL, 3,'2025-12-04 14:15:00', NULL, NULL, 24, NULL, 24),
+(87000.00, 'Compra de mobiliario', '2025-12-05 08:50:00', FALSE,'Cliente con antecedentes negativos', 4,'2025-12-05 08:50:00', NULL, NULL, 25, NULL, 25),
+(195000.00, 'Viaje corporativo', '2025-12-06 13:20:00', TRUE, NULL, 1,'2025-12-06 13:20:00', NULL, NULL, 26, NULL, 26),
+(145000.00, 'Renovación de flota', '2025-12-07 15:10:00', TRUE, NULL, 2,'2025-12-07 15:10:00', NULL, NULL, 27, NULL, 27),
+(315000.00, 'Compra de stock', '2025-12-08 09:40:00', FALSE,'Falta de garantías', 5,'2025-12-08 09:40:00', NULL, NULL, 28, NULL, 28),
+(72000.00, 'Mudanza', '2025-12-09 12:30:00', TRUE, NULL, 3,'2025-12-09 12:30:00', NULL, NULL, 29, NULL, 29),
+(170000.00, 'Estudios en el exterior', '2025-12-10 16:00:00', TRUE, NULL, 2,'2025-12-10 16:00:00', NULL, NULL, 30, NULL, 30);
+INSERT INTO Solicitud VALUES
+(190000.00, 'Compra de insumos médicos', '2025-12-11 09:00:00', TRUE, NULL, 1,'2025-12-11 09:00:00', NULL, NULL, 31, NULL, 31),
+(215000.00, 'Reparación de instalaciones', '2025-12-12 10:30:00', FALSE,'Cliente en revisión judicial', 4,'2025-12-12 10:30:00', NULL, NULL, 32, NULL, 32),
+(99000.00, 'Gastos familiares', '2025-12-13 11:45:00', TRUE, NULL, 3,'2025-12-13 11:45:00', NULL, NULL, 33, NULL, 33),
+(325000.00, 'Apertura de sucursal', '2025-12-14 14:15:00', TRUE, NULL, 2,'2025-12-14 14:15:00', NULL, NULL, 34, NULL, 34),
+(88000.00, 'Compra de mobiliario escolar', '2025-12-15 08:50:00', FALSE,'Falta de aval institucional', 5,'2025-12-15 08:50:00', NULL, NULL, 35, NULL, 35),
+(198000.00, 'Viaje académico', '2025-12-16 13:20:00', TRUE, NULL, 1,'2025-12-16 13:20:00', NULL, NULL, 36, NULL, 36),
+(148000.00, 'Renovación de equipos', '2025-12-17 15:10:00', TRUE, NULL, 3,'2025-12-17 15:10:00', NULL, NULL, 37, NULL, 37),
+(318000.00, 'Compra de mercadería', '2025-12-18 09:40:00', FALSE,'Inconsistencias en documentación', 4,'2025-12-18 09:40:00', NULL, NULL, 38, NULL, 38),
+(73000.00, 'Mudanza internacional', '2025-12-19 12:30:00', TRUE, NULL, 2,'2025-12-19 12:30:00', NULL, NULL, 39, NULL, 39),
+(175000.00, 'Estudios técnicos', '2025-12-20 16:00:00', TRUE, NULL, 1,'2025-12-20 16:00:00', NULL, NULL, 40, NULL, 40);
+INSERT INTO Solicitud VALUES
+(195000.00, 'Compra de equipamiento médico', '2025-12-21 09:00:00', TRUE, NULL, 3,'2025-12-21 09:00:00', NULL, NULL, 41, NULL, 41),
+(225000.00, 'Reforma de local comercial', '2025-12-22 10:30:00', FALSE,'Cliente con deuda activa', 5,'2025-12-22 10:30:00', NULL, NULL, 42, NULL, 42),
+(101000.00, 'Gastos personales urgentes', '2025-12-23 11:45:00', TRUE, NULL, 1,'2025-12-23 11:45:00', NULL, NULL, 43, NULL, 43),
+(330000.00, 'Apertura de nueva sede', '2025-12-24 14:15:00', TRUE, NULL, 2,'2025-12-24 14:15:00', NULL, NULL, 44, NULL, 44),
+(89000.00, 'Compra de mobiliario urbano', '2025-12-25 08:50:00', FALSE,'Falta de documentación respaldatoria', 4,'2025-12-25 08:50:00', NULL, NULL, 45, NULL, 45),
+(205000.00, 'Viaje institucional', '2025-12-26 13:20:00', TRUE, NULL, 3,'2025-12-26 13:20:00', NULL, NULL, 46, NULL, 46),
+(150000.00, 'Renovación de sistemas', '2025-12-27 15:10:00', TRUE, NULL, 1,'2025-12-27 15:10:00', NULL, NULL, 47, NULL, 47),
+(320000.00, 'Compra de insumos agrícolas', '2025-12-28 09:40:00', FALSE,'Cliente con historial irregular', 5,'2025-12-28 09:40:00', NULL, NULL, 48, NULL, 48),
+(74000.00, 'Mudanza nacional', '2025-12-29 12:30:00', TRUE, NULL, 2,'2025-12-29 12:30:00', NULL, NULL, 49, NULL, 49),
+(180000.00, 'Estudios de especialización', '2025-12-30 16:00:00', TRUE, NULL, 3,'2025-12-30 16:00:00', NULL, NULL, 50, NULL, 50);
+INSERT INTO Solicitud VALUES
+(200000.00, 'Compra de herramientas industriales', '2025-12-31 09:00:00', TRUE, NULL, 1,'2025-12-31 09:00:00', NULL, NULL, 51, NULL, 51),
+(230000.00, 'Reforma de planta', '2026-01-01 10:30:00', FALSE,'Falta de documentación técnica', 4,'2026-01-01 10:30:00', NULL, NULL, 52, NULL, 52),
+(102000.00, 'Gastos de mudanza', '2026-01-02 11:45:00', TRUE, NULL, 3,'2026-01-02 11:45:00', NULL, NULL, 53, NULL, 53),
+(335000.00, 'Apertura de nueva oficina', '2026-01-03 14:15:00', TRUE, NULL, 2,'2026-01-03 14:15:00', NULL, NULL, 54, NULL, 54),
+(90000.00, 'Compra de mobiliario de oficina', '2026-01-04 08:50:00', FALSE,'Cliente con historial irregular', 5,'2026-01-04 08:50:00', NULL, NULL, 55, NULL, 55),
+(210000.00, 'Viaje de capacitación', '2026-01-05 13:20:00', TRUE, NULL, 1,'2026-01-05 13:20:00', NULL, NULL, 56, NULL, 56),
+(152000.00, 'Renovación de flota vehicular', '2026-01-06 15:10:00', TRUE, NULL, 3,'2026-01-06 15:10:00', NULL, NULL, 57, NULL, 57),
+(325000.00, 'Compra de insumos tecnológicos', '2026-01-07 09:40:00', FALSE,'Falta de garantías comerciales', 4,'2026-01-07 09:40:00', NULL, NULL, 58, NULL, 58),
+(75000.00, 'Mudanza y alquiler', '2026-01-08 12:30:00', TRUE, NULL, 2,'2026-01-08 12:30:00', NULL, NULL, 59, NULL, 59),
+(185000.00, 'Estudios universitarios', '2026-01-09 16:00:00', TRUE, NULL, 1,'2026-01-09 16:00:00', NULL, NULL, 60, NULL, 60);
