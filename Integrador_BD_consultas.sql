@@ -1,206 +1,9 @@
-/*CREATE DATABASE financiamiento_ra;*/
-/*ESTA ES LA VERSION QUE NO ESTA EN GITHUB*/
 USE financiamiento_ra;
-/*CREATE TABLE `Sucursal` (
-    `id_sucursal` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    `nombre_sucursal` VARCHAR(255),
-    `localidad` VARCHAR(255),
-    `provincia` VARCHAR(255),
-    `telefono_sucursal` VARCHAR(255), 
-    `direccion` VARCHAR(255), 
-    `fecha_de_alta` TIMESTAMP, 
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255), 
-    `modificado_por` VARCHAR(255)
-);
-CREATE TABLE `Empleado` (
-`id_empleado`  integer UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-`id_sucursal` int,
-`DNI_empleado` varchar(255),
-`nombre` varchar(255),
-`apellido` varchar(255),
-`cargo` varchar(255),
-`email` varchar(255),
-`telefono` varchar(255),
-`fecha_de_alta` timestamp,
-`fecha_de_baja` timestamp,
-`fecha_de_modificacion` timestamp,
-`creado_por` varchar(255),
-`modificado_por` varchar(255),
-FOREIGN KEY (id_sucursal) REFERENCES Sucursal(id_sucursal)
-);
-
-CREATE TABLE `Producto_campana` (
-    `id_productocampana` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `tasa_promocional` DECIMAL,
-    `vigencia` DATETIME,
-    `resultados` DECIMAL,
-    `fecha_inicio` TIMESTAMP,
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_modificacion` TIMESTAMP,
-    `modificado_por` VARCHAR(255),
-    `creado_por` VARCHAR(255)
-);
-
-CREATE TABLE `Cliente` (
-    `id_cliente` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `nombre_cliente` VARCHAR(255),
-    `apellido_cliente` VARCHAR(255),
-    `documento` VARCHAR(255),  
-    `tipo_de_persona` ENUM('juridica', 'fisica'),
-    `ingreso_declarado` DECIMAL,
-    `domicilio` VARCHAR(255),
-    `email_cliente` VARCHAR(255),
-    `telefono_cliente` VARCHAR(255),
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255)
-);
-
-CREATE TABLE `Producto_financiero` (
-    `id_producto_financiero` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `nombre_producto_financiero` VARCHAR(255),
-    `descripcion` VARCHAR(255),
-    `limite_max` DECIMAL(10,2),
-    `limite_min` DECIMAL(10,2),
-    `requisitos` VARCHAR(255),
-    `tasa_base` DECIMAL,
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255)
-);
-
-CREATE TABLE `Solicitud` (
-    `id_solicitud` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `monto` DECIMAL,
-    `destino` VARCHAR(255), 
-    `fecha_solicitud` TIMESTAMP,
-    `estado` BOOLEAN,
-    `motivo_estado` VARCHAR(255),
-    `fecha_de_alta` TIMESTAMP, 
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255)
-);
-
-CREATE TABLE `Garante` (
-    `id_garante` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `nombre` VARCHAR(255),
-    `apellido` VARCHAR(255),
-    `DNI_garante` VARCHAR(255),
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255),
-    `id_solicitud` INT,
-    FOREIGN KEY (`id_solicitud`) REFERENCES `Solicitud`(`id_solicitud`)
-);
-
-CREATE TABLE `Cliente_campana` (
-    `id_clientecampana` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `fecha_ingreso` TIMESTAMP,
-    `cliente_nuevo` BOOLEAN,
-    `fecha_inicio` TIMESTAMP,
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_modificacion` TIMESTAMP,
-    `modificado_por` VARCHAR(255),
-    `creado_por` VARCHAR(255),
-    `id_productocampana` INT,
-    FOREIGN KEY (`id_productocampana`) REFERENCES `Producto_campana`(`id_productocampana`)
-);
-
-CREATE TABLE `Credito` (
-    `id_credito` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `id_cliente` INT NOT NULL,
-    `id_producto_financiero` INT NOT NULL,
-    `id_solicitud` INT NOT NULL,
-    `id_credito_padre` INT,
-    `monto_otorgado` DECIMAL,
-    `fecha_inicio` TIMESTAMP,
-    `fecha_fin` TIMESTAMP,
-    `tasa_aplicada` DECIMAL,
-    `plazo_devolucion` INT,
-    `estado_crediticio` VARCHAR(255),
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255),
-
-    FOREIGN KEY (`id_cliente`) REFERENCES `Cliente`(`id_cliente`),
-    FOREIGN KEY (`id_producto_financiero`) REFERENCES `Producto_financiero`(`id_producto_financiero`),
-    FOREIGN KEY (`id_solicitud`) REFERENCES `Solicitud`(`id_solicitud`),
-    FOREIGN KEY (`id_credito_padre`) REFERENCES `Credito`(`id_credito`)
-);
-
-CREATE TABLE `Historial_de_tasas` (
-    `id_historial` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `tasa` DECIMAL(10,2),
-    `fecha_inicio` TIMESTAMP,
-    `fecha_fin` TIMESTAMP,
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255)
-);
-
-CREATE TABLE `Cuota` (
-    `id_cuota` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `id_credito` INT NOT NULL,
-    `numero_cuota` INT,
-    `fecha_de_emision` TIMESTAMP,
-    `fecha_de_vencimiento` TIMESTAMP,
-    `monto_total` DECIMAL(10,2),
-    `estado` BOOLEAN,
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255),
-    FOREIGN KEY (`id_credito`) REFERENCES `Credito`(`id_credito`)
-);
-
-CREATE TABLE `Pago` (
-    `id_pago` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `id_cuota` INT NOT NULL,
-    `fecha_de_pago` TIMESTAMP,
-    `monto_pagado` DECIMAL,
-    `demora` INT,
-    `penalizacion_mora` DECIMAL(10,2),
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255),
-    FOREIGN KEY (`id_cuota`) REFERENCES `Cuota`(`id_cuota`)
-);
-
-CREATE TABLE `Metodo_de_pago` (
-    `id_metodo` INT UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `metodo` ENUM('Efectivo', 'Tarjeta', 'Transferencia') NOT NULL,
-    `fecha_de_alta` TIMESTAMP,
-    `fecha_de_baja` TIMESTAMP,
-    `fecha_de_modificacion` TIMESTAMP,
-    `creado_por` VARCHAR(255),
-    `modificado_por` VARCHAR(255)
-);*/
-
 /*TRIGGERS*/
-/* Trigger: auditoría automática en modificaciones
-Actualiza fecha_de_modificacion y modificado_por en cualquier UPDATE de Cliente.
-Esto evita que un empleado modifique datos sin dejar rastro.*/
+/* Trigger: actualiza fecha_de_modificacion y modificado_por en cualquier UPDATE de Cliente.
+Esto evita que un empleado modifique datos sin dejar rastro. En este caso lo que pone es el nombre del user de MySQL no el id*/
 DELIMITER $$
-CREATE TRIGGER trg_prueba
+CREATE TRIGGER seguimiento_modificacion
 BEFORE INSERT ON Cliente
 FOR EACH ROW
 BEGIN
@@ -209,10 +12,10 @@ END $$
 
 DELIMITER ;
 
-/*rigger: automatizar cálculo de penalización por mora
+/*Trigger: automatizar cálculo de penalización por mora
 Se aplica penalización cuando un pago llega más de X días tarde.*/
 DELIMITER $$
-CREATE TRIGGER trg_calcular_penalizacion
+CREATE TRIGGER calcular_penalizacion
 BEFORE INSERT ON Pago
 FOR EACH ROW
 BEGIN
@@ -223,15 +26,18 @@ BEGIN
     END IF;
 END;
 
-/* rigger: cuando un pago cubre totalmente la cuota → marcar cuota como pagada
+/*Trigger: cuando un pago cubre totalmente la cuota → marcar cuota como pagada
 Automaticación típica administrativa.*/
-CREATE TRIGGER trg_marcar_cuota_pagada
+DELIMITER $$
+
+CREATE TRIGGER cuota_pagada
 AFTER INSERT ON Pago
 FOR EACH ROW
 BEGIN
     DECLARE total_pagado DECIMAL(10,2);
 
-    SELECT SUM(monto_pagado) INTO total_pagado
+    SELECT SUM(monto_pagado)
+    INTO total_pagado
     FROM Pago
     WHERE id_cuota = NEW.id_cuota;
 
@@ -240,10 +46,15 @@ BEGIN
         fecha_de_modificacion = NOW()
     WHERE id_cuota = NEW.id_cuota
       AND total_pagado >= monto_total;
-END;
+END $$
+
+DELIMITER ;
+
 /*Trigger: evitar créditos duplicados con solicitudes rechazadas
 Si la solicitud está rechazada (estado = 0), impide que se genere un crédito.*/
-CREATE TRIGGER trg_no_credito_solicitud_rechazada
+DELIMITER $$
+
+CREATE TRIGGER solicitud_rechazada
 BEFORE INSERT ON Credito
 FOR EACH ROW
 BEGIN
@@ -259,6 +70,7 @@ BEGIN
     END IF;
 END;
 
+DELIMITER ;
 /*tRIGGER PARA generar cuotas automaticamente*/
 DELIMITER $$
 
@@ -269,14 +81,11 @@ BEGIN
     DECLARE i INT DEFAULT 1;
     DECLARE monto_cuota DECIMAL(10,2);
     DECLARE fecha_venc DATE;
-    
-    -- Ejemplo simple: dividir el monto total por la cantidad de cuotas
+
     SET monto_cuota = NEW.monto_otorgado / NEW.plazo_devolucion;
-    SET fecha_venc = DATE(NEW.fecha_inicio);
 
     WHILE i <= NEW.plazo_devolucion DO
-        
-        -- sumar 1 mes por cada cuota
+
         SET fecha_venc = DATE_ADD(NEW.fecha_inicio, INTERVAL i MONTH);
 
         INSERT INTO Cuota (
@@ -295,7 +104,7 @@ BEGIN
             NEW.fecha_inicio,
             fecha_venc,
             monto_cuota,
-            0,          -- estado: 0 = pendiente
+            0,
             NOW(),
             NEW.creado_por
         );
@@ -305,6 +114,7 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 
 /*Funciones y procedimientos almacenados*/
 /*Función: calcular monto total financiado (interés simple)
@@ -323,17 +133,8 @@ BEGIN
 END$$
 
 DELIMITER ;
-/*Procedimiento: generar crédito completo (con validaciones)
 
-Incluye:
-
-Verifica que la solicitud esté aprobada
-
-Verifica que el cliente exista
-
-Inserta crédito
-
-Devuelve ID generado*/
+/*Procedimiento: generar crédito completo (con validaciones)*/
 DELIMITER $$
 
 CREATE PROCEDURE sp_crear_credito (
@@ -384,6 +185,7 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 /*Procedimiento: Crear una solicitud validando ingreso mínimo*/
 DELIMITER $$
 
@@ -416,6 +218,7 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 /*Función: calcular la tasa final según campaña + producto*/
 DELIMITER $$
 
@@ -449,6 +252,7 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 /*Procedimiento: Registrar un pago con validación de monto*/
 DELIMITER $$
 
@@ -499,6 +303,7 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 /*Procedimiento para detectar clientes en riesgo (score interno simple) ESTE SI O SI*/
 DELIMITER $$
 CREATE PROCEDURE sp_evaluar_riesgo_cliente (
@@ -577,6 +382,7 @@ BEGIN
 
     SET p_id_credito_nuevo = LAST_INSERT_ID();
 END;
+
 /* Procedimiento: auditoría completa de cambios por tabla ESTE SI O SI*/
 CREATE PROCEDURE sp_registrar_log (
     IN p_tabla VARCHAR(100),
