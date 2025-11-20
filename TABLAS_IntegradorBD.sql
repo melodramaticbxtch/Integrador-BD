@@ -1,6 +1,22 @@
 /*CREACION DE LAS TABLAS*/
 CREATE DATABASE financiamiento_kg;
 USE financiamiento_kg;
+/*USERS*/
+/* 1) USUARIO ADMINISTRADOR – acceso total */
+CREATE USER 'admin_finanzas'@'%' IDENTIFIED BY 'Admin123!';
+GRANT ALL PRIVILEGES ON financiamiento_kg.* TO 'admin_finanzas'@'%';
+
+/* 2) USUARIO EDITOR – solo INSERT, UPDATE y SELECT (sin DROP, DELETE ni CREATE) */
+CREATE USER 'editor_finanzas'@'%' IDENTIFIED BY 'Editor123!';
+GRANT SELECT, INSERT, UPDATE ON financiamiento_kg.* TO 'editor_finanzas'@'%';
+
+/* 3) USUARIO LECTOR – solo lectura */
+CREATE USER 'lector_finanzas'@'%' IDENTIFIED BY 'Lector123!';
+GRANT SELECT ON financiamiento_kg.* TO 'lector_finanzas'@'%';
+
+/* Aplicar cambios */
+FLUSH PRIVILEGES;
+
 CREATE TABLE IF NOT EXISTS Sucursal (
     id_sucursal INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_sucursal VARCHAR(255),
