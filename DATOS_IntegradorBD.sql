@@ -297,7 +297,8 @@ VALUES
 (280000.00, 'Compra de maquinaria', '2025-11-15 10:30:00', FALSE,'Excede capacidad de pago', 4,'2025-11-15 10:30:00', NULL, NULL, 8, NULL, 8),
 (65000.00, 'Estudios universitarios', '2025-11-17 12:00:00', TRUE, NULL, 3,'2025-11-17 12:00:00', NULL, NULL, 9, NULL, 9),
 (160000.00, 'Mudanza y alquiler', '2025-11-19 15:45:00', TRUE, NULL, 2,'2025-11-19 15:45:00', NULL, NULL, 10, NULL, 10);
-INSERT INTO Solicitud VALUES
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, puntaje_riesgo,
+fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente) VALUES
 (200000.00, 'Compra de insumos', '2025-11-21 09:00:00', TRUE, NULL, 1,'2025-11-21 09:00:00', NULL, NULL, 11, NULL, 11),
 (175000.00, 'Reparación de maquinaria', '2025-11-22 10:30:00', FALSE,'Cliente en mora', 4,'2025-11-22 10:30:00', NULL, NULL, 12, NULL, 12),
 (95000.00, 'Gastos personales', '2025-11-23 11:45:00', TRUE, NULL, 3,'2025-11-23 11:45:00', NULL, NULL, 13, NULL, 13),
@@ -308,7 +309,8 @@ INSERT INTO Solicitud VALUES
 (310000.00, 'Compra de stock', '2025-11-28 09:40:00', FALSE,'Inconsistencias en ingresos', 4,'2025-11-28 09:40:00', NULL, NULL, 18, NULL, 18),
 (70000.00, 'Mudanza', '2025-11-29 12:30:00', TRUE, NULL, 2,'2025-11-29 12:30:00', NULL, NULL, 19, NULL, 19),
 (165000.00, 'Estudios de posgrado', '2025-11-30 16:00:00', TRUE, NULL, 1,'2025-11-30 16:00:00', NULL, NULL, 20, NULL, 20);
-INSERT INTO Solicitud VALUES
+INSERT INTO Solicitud  (monto, destino, fecha_solicitud, estado, motivo_estado, puntaje_riesgo,
+fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente) VALUES
 (185000.00, 'Compra de equipamiento', '2025-12-01 09:00:00', TRUE, NULL, 2,'2025-12-01 09:00:00', NULL, NULL, 21, NULL, 21),
 (210000.00, 'Reforma de oficina', '2025-12-02 10:30:00', FALSE,'Ingresos insuficientes', 5,'2025-12-02 10:30:00', NULL, NULL, 22, NULL, 22),
 (98000.00, 'Gastos médicos', '2025-12-03 11:45:00', TRUE, NULL, 1,'2025-12-03 11:45:00', NULL, NULL, 23, NULL, 23),
@@ -319,7 +321,8 @@ INSERT INTO Solicitud VALUES
 (315000.00, 'Compra de stock', '2025-12-08 09:40:00', FALSE,'Falta de garantías', 5,'2025-12-08 09:40:00', NULL, NULL, 28, NULL, 28),
 (72000.00, 'Mudanza', '2025-12-09 12:30:00', TRUE, NULL, 3,'2025-12-09 12:30:00', NULL, NULL, 29, NULL, 29),
 (170000.00, 'Estudios en el exterior', '2025-12-10 16:00:00', TRUE, NULL, 2,'2025-12-10 16:00:00', NULL, NULL, 30, NULL, 30);
-INSERT INTO Solicitud VALUES
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, puntaje_riesgo,
+fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)VALUES
 (190000.00, 'Compra de insumos médicos', '2025-12-11 09:00:00', TRUE, NULL, 1,'2025-12-11 09:00:00', NULL, NULL, 31, NULL, 31),
 (215000.00, 'Reparación de instalaciones', '2025-12-12 10:30:00', FALSE,'Cliente en revisión judicial', 4,'2025-12-12 10:30:00', NULL, NULL, 32, NULL, 32),
 (99000.00, 'Gastos familiares', '2025-12-13 11:45:00', TRUE, NULL, 3,'2025-12-13 11:45:00', NULL, NULL, 33, NULL, 33),
@@ -330,7 +333,8 @@ INSERT INTO Solicitud VALUES
 (318000.00, 'Compra de mercadería', '2025-12-18 09:40:00', FALSE,'Inconsistencias en documentación', 4,'2025-12-18 09:40:00', NULL, NULL, 38, NULL, 38),
 (73000.00, 'Mudanza internacional', '2025-12-19 12:30:00', TRUE, NULL, 2,'2025-12-19 12:30:00', NULL, NULL, 39, NULL, 39),
 (175000.00, 'Estudios técnicos', '2025-12-20 16:00:00', TRUE, NULL, 1,'2025-12-20 16:00:00', NULL, NULL, 40, NULL, 40);
-INSERT INTO Solicitud VALUES
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, puntaje_riesgo,
+fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)VALUES
 (195000.00, 'Compra de equipamiento médico', '2025-12-21 09:00:00', TRUE, NULL, 3,'2025-12-21 09:00:00', NULL, NULL, 41, NULL, 41),
 (225000.00, 'Reforma de local comercial', '2025-12-22 10:30:00', FALSE,'Cliente con deuda activa', 5,'2025-12-22 10:30:00', NULL, NULL, 42, NULL, 42),
 (101000.00, 'Gastos personales urgentes', '2025-12-23 11:45:00', TRUE, NULL, 1,'2025-12-23 11:45:00', NULL, NULL, 43, NULL, 43),
@@ -341,7 +345,8 @@ INSERT INTO Solicitud VALUES
 (320000.00, 'Compra de insumos agrícolas', '2025-12-28 09:40:00', FALSE,'Cliente con historial irregular', 5,'2025-12-28 09:40:00', NULL, NULL, 48, NULL, 48),
 (74000.00, 'Mudanza nacional', '2025-12-29 12:30:00', TRUE, NULL, 2,'2025-12-29 12:30:00', NULL, NULL, 49, NULL, 49),
 (180000.00, 'Estudios de especialización', '2025-12-30 16:00:00', TRUE, NULL, 3,'2025-12-30 16:00:00', NULL, NULL, 50, NULL, 50);
-INSERT INTO Solicitud VALUES
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, puntaje_riesgo,
+fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)VALUES
 (200000.00, 'Compra de herramientas industriales', '2025-12-31 09:00:00', TRUE, NULL, 1,'2025-12-31 09:00:00', NULL, NULL, 51, NULL, 51),
 (230000.00, 'Reforma de planta', '2026-01-01 10:30:00', FALSE,'Falta de documentación técnica', 4,'2026-01-01 10:30:00', NULL, NULL, 52, NULL, 52),
 (102000.00, 'Gastos de mudanza', '2026-01-02 11:45:00', TRUE, NULL, 3,'2026-01-02 11:45:00', NULL, NULL, 53, NULL, 53),
@@ -352,3 +357,69 @@ INSERT INTO Solicitud VALUES
 (325000.00, 'Compra de insumos tecnológicos', '2026-01-07 09:40:00', FALSE,'Falta de garantías comerciales', 4,'2026-01-07 09:40:00', NULL, NULL, 58, NULL, 58),
 (75000.00, 'Mudanza y alquiler', '2026-01-08 12:30:00', TRUE, NULL, 2,'2026-01-08 12:30:00', NULL, NULL, 59, NULL, 59),
 (185000.00, 'Estudios universitarios', '2026-01-09 16:00:00', TRUE, NULL, 1,'2026-01-09 16:00:00', NULL, NULL, 60, NULL, 60);
+
+/*TABLA GARANTE*/
+INSERT INTO Garante (nombre_garante, apellido_garante, DNI_garante, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_solicitud) VALUES
+('Lucas', 'Gómez', '32789456', NOW(), NULL, NULL, 12, 12, 11),
+('Mariana', 'Soria', '28900444', NOW(), NULL, NULL, 5, NULL, 12),
+('Sofía', 'Benítez', '33822190', NOW(), NULL, NULL, 18, 9, 13),
+('Nicolás', 'Pereyra', '36111987', NOW(), NULL, NULL, 21, NULL, 14),
+('Carla', 'Domínguez', '29544882', NOW(), NULL, NULL, 16, 8, 15),
+('Julián', 'Mercado', '40111922', NOW(), NULL, NULL, 7, NULL, 16),
+('Victoria', 'Ríos', '37222811', NOW(), NULL, NULL, 19, 19, 17),
+('Leonardo', 'Dávila', '33149777', NOW(), NULL, NULL, 6, NULL, 18),
+('Ana', 'Páez', '27400988', NOW(), NULL, NULL, 25, 25, 19),
+('Gabriel', 'Torres', '38743821', NOW(), NULL, NULL, 11, 11, 20),
+('María', 'Acuña', '29888110', NOW(), NULL, NULL, 4, NULL, 21),
+('Pablo', 'Coria', '34922881', NOW(), NULL, NULL, 55, 55, 22),
+('Esteban', 'Vera', '41299300', NOW(), NULL, NULL, 22, 10, 23),
+('Cintia', 'Lagos', '31822990', NOW(), NULL, NULL, 3, 3, 24),
+('Fernando', 'Marquez', '36411220', NOW(), NULL, NULL, 48, NULL, 25),
+('Ramiro', 'Silva', '38119902', NOW(), NULL, NULL, 2, NULL, 26),
+('Daniela', 'Noriega', '29911822', NOW(), NULL, NULL, 1, 1, 27),
+('Brenda', 'Sena', '27999210', NOW(), NULL, NULL, 47, 47, 28),
+('Joaquín', 'Peña', '35222091', NOW(), NULL, NULL, 9, NULL, 29),
+('Martina', 'Funes', '40311444', NOW(), NULL, NULL, 52, 52, 30),
+('Adrián', 'Palacios', '33118800', NOW(), NULL, NULL, 26, NULL, 31),
+('Camila', 'Arce', '38299112', NOW(), NULL, NULL, 14, 14, 32),
+('Emanuel', 'López', '37011299', NOW(), NULL, NULL, 8, NULL, 33),
+('Lautaro', 'Sierra', '33001991', NOW(), NULL, NULL, 13, 13, 34),
+('Paula', 'Rivas', '34119020', NOW(), NULL, NULL, 17, NULL, 35),
+('Sergio', 'Coronel', '38601011', NOW(), NULL, NULL, 44, 44, 36),
+('Milagros', 'Suárez', '39772011', NOW(), NULL, NULL, 41, NULL, 37),
+('Tomás', 'Godoy', '31118872', NOW(), NULL, NULL, 24, 24, 38),
+('Agustina', 'Peralta', '34566211', NOW(), NULL, NULL, 20, NULL, 39),
+('Juan', 'Ferrero', '41900987', NOW(), NULL, NULL, 58, 58, 40),
+('Rocío', 'Molina', '30999112', NOW(), NULL, NULL, 15, NULL, 41),
+('Matías', 'Delgado', '36222009', NOW(), NULL, NULL, 10, 10, 42),
+('Carolina', 'Pizarro', '27888112', NOW(), NULL, NULL, 40, NULL, 43),
+('Alberto', 'Escobar', '33999811', NOW(), NULL, NULL, 36, 36, 44),
+('Gisel', 'Moreno', '31144901', NOW(), NULL, NULL, 59, NULL, 45),
+('Hernán', 'Puebla', '40118188', NOW(), NULL, NULL, 23, 23, 46),
+('Julieta', 'Vega', '27700219', NOW(), NULL, NULL, 42, NULL, 47),
+('Lucía', 'Garrido', '34400122', NOW(), NULL, NULL, 32, 32, 48),
+('Sebastián', 'Bustos', '38211300', NOW(), NULL, NULL, 29, NULL, 49),
+('Carla', 'Zárate', '29671290', NOW(), NULL, NULL, 57, 57, 50),
+('Ignacio', 'Campos', '41902210', NOW(), NULL, NULL, 53, NULL, 51),
+('Santiago', 'Herrera', '30888971', NOW(), NULL, NULL, 18, 18, 52),
+('Elena', 'Villar', '27660011', NOW(), NULL, NULL, 56, NULL, 53),
+('Jorge', 'Avellaneda', '32990014', NOW(), NULL, NULL, 22, 22, 54),
+('Celeste', 'Nuñez', '31400982', NOW(), NULL, NULL, 43, NULL, 55),
+('Mauricio', 'Pardo', '39118002', NOW(), NULL, NULL, 31, 31, 56),
+('Abril', 'Montenegro', '30011877', NOW(), NULL, NULL, 12, NULL, 57),
+('Kevin', 'Roldán', '37844111', NOW(), NULL, NULL, 49, 49, 58),
+('Rafael', 'Quiroga', '35228102', NOW(), NULL, NULL, 54, NULL, 59),
+('Camila', 'Álava', '31899154', NOW(), NULL, NULL, 6, 6, 60),
+('Damián', 'Bravo', '40119908', NOW(), NULL, NULL, 46, NULL, 61),
+('Bianca', 'Silvestre', '29711092', NOW(), NULL, NULL, 28, 28, 62),
+('Renzo', 'Videla', '36900211', NOW(), NULL, NULL, 39, NULL, 63),
+('Ayelén', 'Maidana', '27831011', NOW(), NULL, NULL, 33, 33, 64),
+('Franco', 'Gaitán', '41100092', NOW(), NULL, NULL, 45, NULL, 65),
+('Ángeles', 'Soto', '30188200', NOW(), NULL, NULL, 37, 37, 66),
+('Mauro', 'Caballero', '32220119', NOW(), NULL, NULL, 50, NULL, 67),
+('Daniel', 'Monti', '36888221', NOW(), NULL, NULL, 27, 27, 68),
+('Yesica', 'Pereyra', '33600982', NOW(), NULL, NULL, 13, NULL, 69),
+('Ezequiel', 'Campos', '39777118', NOW(), NULL, NULL, 35, 35, 70),
+('Bárbara', 'Lamas', '28999122', NOW(), NULL, NULL, 51, NULL, 70);
+
+/*TABLA CREDITO*/
