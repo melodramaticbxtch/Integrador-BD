@@ -303,6 +303,27 @@ SELECT c.id_cliente,
 FROM cliente c
 HAVING promedio_pago > total_creditos * 0.8;
 
+/*
+SELECT c.id_cliente,
+       c.nombre_cliente,
+       promedio_pago,
+       total_creditos
+FROM cliente c
+         JOIN (SELECT s2.id_cliente,
+                      AVG(p.monto_pagado) AS promedio_pago
+               FROM solicitud s2
+                        JOIN credito cr2 ON s2.id_solicitud = cr2.id_solicitud
+                        JOIN cuota cu2 ON cr2.id_credito = cu2.id_credito
+                        JOIN pago p ON cu2.id_cuota = p.id_cuota
+               GROUP BY s2.id_cliente) AS pagos ON c.id_cliente = pagos.id_cliente
+         JOIN (SELECT s3.id_cliente,
+                      SUM(cr3.monto_otorgado) AS total_creditos
+               FROM solicitud s3
+                        JOIN credito cr3 ON s3.id_solicitud = cr3.id_solicitud
+               GROUP BY s3.id_cliente) AS creditos ON c.id_cliente = creditos.id_cliente
+WHERE promedio_pago > total_creditos * 0.8;
+*/
+
 /*Ranking por puntaje riesgo*/
 SELECT c.id_cliente,
        c.nombre_cliente,
