@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS Solicitud (
     fecha_de_modificacion TIMESTAMP,
     creado_por INT,
     modificado_por INT,
+    id_cliente INT,
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 CREATE TABLE IF NOT EXISTS Garante (
@@ -115,7 +116,7 @@ CREATE TABLE IF NOT EXISTS Cliente_campana (
     fecha_de_modificacion TIMESTAMP,
     creado_por INT,
     modificado_por INT,
-    id_productocampana INT,
+    id_producto_campana INT,
     FOREIGN KEY (id_producto_campana) REFERENCES Producto_campana(id_producto_campana)
 
 );
@@ -144,6 +145,7 @@ CREATE TABLE IF NOT EXISTS Credito (
 
 CREATE TABLE IF NOT EXISTS Historial_de_tasas (
     id_historial INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_producto_financiero INT,
     tasa DECIMAL(10,2),
     fecha_inicio TIMESTAMP,
     fecha_fin TIMESTAMP,
@@ -189,6 +191,7 @@ CREATE TABLE IF NOT EXISTS Pago (
 
 CREATE TABLE IF NOT EXISTS Metodo_de_pago (
     id_metodo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_pago INT,
     metodo ENUM('Efectivo', 'Tarjeta', 'Transferencia') NOT NULL,
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
