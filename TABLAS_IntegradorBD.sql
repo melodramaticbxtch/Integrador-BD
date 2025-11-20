@@ -1,28 +1,6 @@
-/* TRABAJO PRACTICO INTEGRADOR
-INTEGRANTES:
-Bojanovich Hannah
-Brycki Selene
-Gamarra Kiara
-Szevaga Emanuel 
-Viana Matias*/
-/*CREATE DATABASE financiamiento_ra;*/
-USE financiamiento_ra;
-/* Creacion de usuarios por nivel administrativo*/
-/*Los ejecutivos y jefes pueden hacer todo*/
-/*CREATE USER 'admin_ejecutivos'@'%' IDENTIFIED BY 'Admin123!';
-GRANT ALL PRIVILEGES ON financiamiento_ra.* TO 'admin_ejecutivos'@'%' WITH GRANT OPTION;*/
-
-/*Gerentes o empleados con cargos especiales pueden insertar datos*/
-/*CREATE USER 'gerentes_analistas'@'%' IDENTIFIED BY 'Analista123!';
-GRANT SELECT, INSERT, UPDATE 
-ON financiamiento_ra.* 
-TO 'gerentes_analistas'@'%';*/
-
-/*Empleados nuevos o con cargos bajos solo pueden leer*/
-/*CREATE USER 'empleados'@'%' IDENTIFIED BY 'Consulta123!';
-GRANT SELECT 
-ON financiamiento_ra.*/
-
+/*CREACION DE LAS TABLAS*/
+CREATE DATABASE financiamiento_kg;
+USE financiamiento_kg;
 CREATE TABLE IF NOT EXISTS Sucursal (
     id_sucursal INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_sucursal VARCHAR(255),
@@ -41,11 +19,11 @@ CREATE TABLE IF NOT EXISTS Empleado (
     id_empleado INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_sucursal INT,
     DNI_empleado VARCHAR(255),
-    nombre VARCHAR(255),
-    apellido VARCHAR(255),
+    nombre_empleado VARCHAR(255),
+    apellido_empleado VARCHAR(255),
     cargo VARCHAR(255),
-    email VARCHAR(255),
-    telefono VARCHAR(255),
+    email_empleado VARCHAR(255),
+    telefono_empleado VARCHAR(255),
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
     fecha_de_modificacion TIMESTAMP,
@@ -53,9 +31,8 @@ CREATE TABLE IF NOT EXISTS Empleado (
     modificado_por VARCHAR(255),
     FOREIGN KEY (id_sucursal) REFERENCES Sucursal(id_sucursal)
 );
-
 CREATE TABLE IF NOT EXISTS Producto_campana (
-    id_productocampana INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_producto_campana INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     tasa_promocional DECIMAL,
     vigencia DATETIME,
     resultados DECIMAL,
@@ -71,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
     id_cliente INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre_cliente VARCHAR(255),
     apellido_cliente VARCHAR(255),
-    documento VARCHAR(255),
+    DNI_cliente VARCHAR(255),
     tipo_de_persona ENUM('juridica', 'fisica'),
     ingreso_declarado DECIMAL,
     domicilio VARCHAR(255),
@@ -90,7 +67,7 @@ CREATE TABLE IF NOT EXISTS Producto_financiero (
     descripcion VARCHAR(255),
     limite_max DECIMAL(10,2),
     limite_min DECIMAL(10,2),
-    requisitos VARCHAR(255),
+    requisito VARCHAR(255),
     tasa_base DECIMAL,
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
@@ -106,6 +83,7 @@ CREATE TABLE IF NOT EXISTS Solicitud (
     fecha_solicitud TIMESTAMP,
     estado BOOLEAN,
     motivo_estado VARCHAR(255),
+    puntaje_riesgo INT,
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
     fecha_de_modificacion TIMESTAMP,
@@ -115,8 +93,8 @@ CREATE TABLE IF NOT EXISTS Solicitud (
 );
 CREATE TABLE IF NOT EXISTS Garante (
     id_garante INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(255),
-    apellido VARCHAR(255),
+    nombre_garante VARCHAR(255),
+    apellido_garante VARCHAR(255),
     DNI_garante VARCHAR(255),
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
@@ -128,17 +106,18 @@ CREATE TABLE IF NOT EXISTS Garante (
 );
 
 CREATE TABLE IF NOT EXISTS Cliente_campana (
-    id_clientecampana INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_cliente_campana INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     fecha_ingreso TIMESTAMP,
     cliente_nuevo BOOLEAN,
     fecha_inicio TIMESTAMP,
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
-    fecha_modificacion TIMESTAMP,
+    fecha_de_modificacion TIMESTAMP,
     creado_por INT,
     modificado_por INT,
     id_productocampana INT,
-    FOREIGN KEY (id_productocampana) REFERENCES Producto_campana(id_productocampana)
+    FOREIGN KEY (id_producto_campana) REFERENCES Producto_campana(id_producto_campana)
+
 );
 
 CREATE TABLE IF NOT EXISTS Credito (
@@ -174,6 +153,7 @@ CREATE TABLE IF NOT EXISTS Historial_de_tasas (
     creado_por INT,
     modificado_por INT,
     FOREIGN KEY (id_producto_financiero) REFERENCES Producto_financiero(id_producto_financiero)
+    
 );
 
 CREATE TABLE IF NOT EXISTS Cuota (
@@ -215,7 +195,7 @@ CREATE TABLE IF NOT EXISTS Metodo_de_pago (
     fecha_de_modificacion TIMESTAMP,
     creado_por INT,
     modificado_por INT,
-    FOREIGN KEY (id_pago) REFERENCES Pago(id_pago)
-);
+	FOREIGN KEY (id_pago) REFERENCES Pago(id_pago)
 
+);
 
