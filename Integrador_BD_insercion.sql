@@ -277,3 +277,77 @@ VALUES
 ('Préstamo para Bodas y Eventos', 'Financiación de fiestas y grandes eventos', 500000.00, 50000.00, 'Presupuesto de proveedores, 1 año de antigüedad', 0.60, NOW(), NULL, NULL, '9', NULL),
 ('Línea de Inversión Fija', 'Para compra de activos fijos de empresas', 15000000.00, 500000.00, 'Proyecto de inversión detallado, garantía mixta', 0.25, NOW(), NULL, NULL, '5', NULL),
 ('Préstamo para Jubilados', 'Crédito con descuento de cuota en el haber', 300000.00, 10000.00, 'Último recibo de haber, sin morosidad previsional', 0.50, NOW(), NULL, NULL, '1', NULL);*/
+
+
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(150000.00, 'Compra de vehículo', '2025-11-01 10:00:00', TRUE, NULL, '2025-11-01 10:00:00', NULL, NULL, 1, NULL, 5),
+(220000.00, 'Refacción de vivienda', '2025-11-03 11:30:00', FALSE, 'Falta de documentación', '2025-11-03 11:30:00', NULL, NULL, 2, NULL, 12),
+(95000.00, 'Pago de deudas', '2025-11-05 09:15:00', TRUE, NULL, '2025-11-05 09:15:00', NULL, NULL, 3, NULL, 18),
+(350000.00, 'Capital de trabajo', '2025-11-07 14:45:00', TRUE, NULL, '2025-11-07 14:45:00', NULL, NULL, 4, NULL, 25),
+(80000.00, 'Compra de herramientas', '2025-11-09 08:20:00', FALSE, 'Historial crediticio negativo', '2025-11-09 08:20:00', NULL, NULL, 5, NULL, 31),
+(180000.00, 'Inversión en negocio', '2025-11-11 13:00:00', TRUE, NULL, '2025-11-11 13:00:00', NULL, NULL, 6, NULL, 39),
+(120000.00, 'Gastos médicos', '2025-11-13 16:10:00', TRUE, NULL, '2025-11-13 16:10:00', NULL, NULL, 7, NULL, 43),
+(280000.00, 'Compra de maquinaria', '2025-11-15 10:30:00', FALSE, 'Excede capacidad de pago', '2025-11-15 10:30:00', NULL, NULL, 8, NULL, 47),
+(65000.00, 'Estudios universitarios', '2025-11-17 12:00:00', TRUE, NULL, '2025-11-17 12:00:00', NULL, NULL, 9, NULL, 51),
+(160000.00, 'Mudanza y alquiler', '2025-11-19 15:45:00', TRUE, NULL, '2025-11-19 15:45:00', NULL, NULL, 10, NULL, 59);
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(200000.00, 'Compra de insumos', '2025-11-21 09:00:00', TRUE, NULL, '2025-11-21 09:00:00', NULL, NULL, 11, NULL, 6),
+(175000.00, 'Reparación de maquinaria', '2025-11-22 10:30:00', FALSE, 'Cliente en mora', '2025-11-22 10:30:00', NULL, NULL, 12, NULL, 13),
+(95000.00, 'Gastos personales', '2025-11-23 11:45:00', TRUE, NULL, '2025-11-23 11:45:00', NULL, NULL, 13, NULL, 20),
+(300000.00, 'Ampliación de local', '2025-11-24 14:15:00', TRUE, NULL, '2025-11-24 14:15:00', NULL, NULL, 14, NULL, 27),
+(85000.00, 'Compra de mobiliario', '2025-11-25 08:50:00', FALSE, 'Documentación vencida', '2025-11-25 08:50:00', NULL, NULL, 15, NULL, 33),
+(190000.00, 'Viaje de negocios', '2025-11-26 13:20:00', TRUE, NULL, '2025-11-26 13:20:00', NULL, NULL, 16, NULL, 38),
+(140000.00, 'Renovación de flota', '2025-11-27 15:10:00', TRUE, NULL, '2025-11-27 15:10:00', NULL, NULL, 17, NULL, 42),
+(310000.00, 'Compra de stock', '2025-11-28 09:40:00', FALSE, 'Inconsistencias en ingresos', '2025-11-28 09:40:00', NULL, NULL, 18, NULL, 49),
+(70000.00, 'Mudanza', '2025-11-29 12:30:00', TRUE, NULL, '2025-11-29 12:30:00', NULL, NULL, 19, NULL, 53),
+(165000.00, 'Estudios de posgrado', '2025-11-30 16:00:00', TRUE, NULL, '2025-11-30 16:00:00', NULL, NULL, 20, NULL, 60);
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(185000.00, 'Compra de equipamiento', '2025-12-01 09:00:00', TRUE, NULL, '2025-12-01 09:00:00', NULL, NULL, 21, NULL, 7),
+(210000.00, 'Reforma de oficina', '2025-12-02 10:30:00', FALSE, 'Ingresos insuficientes', '2025-12-02 10:30:00', NULL, NULL, 22, NULL, 14),
+(98000.00, 'Gastos médicos', '2025-12-03 11:45:00', TRUE, NULL, '2025-12-03 11:45:00', NULL, NULL, 23, NULL, 21),
+(320000.00, 'Expansión comercial', '2025-12-04 14:15:00', TRUE, NULL, '2025-12-04 14:15:00', NULL, NULL, 24, NULL, 28),
+(87000.00, 'Compra de mobiliario', '2025-12-05 08:50:00', FALSE, 'Cliente con antecedentes negativos', '2025-12-05 08:50:00', NULL, NULL, 25, NULL, 35),
+(195000.00, 'Viaje corporativo', '2025-12-06 13:20:00', TRUE, NULL, '2025-12-06 13:20:00', NULL, NULL, 26, NULL, 41),
+(145000.00, 'Renovación de flota', '2025-12-07 15:10:00', TRUE, NULL, '2025-12-07 15:10:00', NULL, NULL, 27, NULL, 45),
+(315000.00, 'Compra de stock', '2025-12-08 09:40:00', FALSE, 'Falta de garantías', '2025-12-08 09:40:00', NULL, NULL, 28, NULL, 50),
+(72000.00, 'Mudanza', '2025-12-09 12:30:00', TRUE, NULL, '2025-12-09 12:30:00', NULL, NULL, 29, NULL, 54),
+(170000.00, 'Estudios en el exterior', '2025-12-10 16:00:00', TRUE, NULL, '2025-12-10 16:00:00', NULL, NULL, 31, NULL, 58);
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(190000.00, 'Compra de insumos médicos', '2025-12-11 09:00:00', TRUE, NULL, '2025-12-11 09:00:00', NULL, NULL, 32, NULL, 8),
+(215000.00, 'Reparación de instalaciones', '2025-12-12 10:30:00', FALSE, 'Cliente en revisión judicial', '2025-12-12 10:30:00', NULL, NULL, 33, NULL, 15),
+(99000.00, 'Gastos familiares', '2025-12-13 11:45:00', TRUE, NULL, '2025-12-13 11:45:00', NULL, NULL, 35, NULL, 22),
+(325000.00, 'Apertura de sucursal', '2025-12-14 14:15:00', TRUE, NULL, '2025-12-14 14:15:00', NULL, NULL, 36, NULL, 29),
+(88000.00, 'Compra de mobiliario escolar', '2025-12-15 08:50:00', FALSE, 'Falta de aval institucional', '2025-12-15 08:50:00', NULL, NULL, 37, NULL, 36),
+(198000.00, 'Viaje académico', '2025-12-16 13:20:00', TRUE, NULL, '2025-12-16 13:20:00', NULL, NULL, 38, NULL, 44),
+(148000.00, 'Renovación de equipos', '2025-12-17 15:10:00', TRUE, NULL, '2025-12-17 15:10:00', NULL, NULL, 39, NULL, 48),
+(318000.00, 'Compra de mercadería', '2025-12-18 09:40:00', FALSE, 'Inconsistencias en documentación', '2025-12-18 09:40:00', NULL, NULL, 40, NULL, 52),
+(73000.00, 'Mudanza internacional', '2025-12-19 12:30:00', TRUE, NULL, '2025-12-19 12:30:00', NULL, NULL, 41, NULL, 56),
+(175000.00, 'Estudios técnicos', '2025-12-20 16:00:00', TRUE, NULL, '2025-12-20 16:00:00', NULL, NULL, 42, NULL, 61);
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(195000.00, 'Compra de equipamiento médico', '2025-12-21 09:00:00', TRUE, NULL, '2025-12-21 09:00:00', NULL, NULL, 43, NULL, 9),
+(225000.00, 'Reforma de local comercial', '2025-12-22 10:30:00', FALSE, 'Cliente con deuda activa', '2025-12-22 10:30:00', NULL, NULL, 44, NULL, 16),
+(101000.00, 'Gastos personales urgentes', '2025-12-23 11:45:00', TRUE, NULL, '2025-12-23 11:45:00', NULL, NULL, 45, NULL, 23),
+(330000.00, 'Apertura de nueva sede', '2025-12-24 14:15:00', TRUE, NULL, '2025-12-24 14:15:00', NULL, NULL, 46, NULL, 30),
+(89000.00, 'Compra de mobiliario urbano', '2025-12-25 08:50:00', FALSE, 'Falta de documentación respaldatoria', '2025-12-25 08:50:00', NULL, NULL, 47, NULL, 37),
+(205000.00, 'Viaje institucional', '2025-12-26 13:20:00', TRUE, NULL, '2025-12-26 13:20:00', NULL, NULL, 48, NULL, 46),
+(150000.00, 'Renovación de sistemas', '2025-12-27 15:10:00', TRUE, NULL, '2025-12-27 15:10:00', NULL, NULL, 49, NULL, 55),
+(320000.00, 'Compra de insumos agrícolas', '2025-12-28 09:40:00', FALSE, 'Cliente con historial irregular', '2025-12-28 09:40:00', NULL, NULL, 50, NULL, 62),
+(74000.00, 'Mudanza nacional', '2025-12-29 12:30:00', TRUE, NULL, '2025-12-29 12:30:00', NULL, NULL, 51, NULL, 11),
+(180000.00, 'Estudios de especialización', '2025-12-30 16:00:00', TRUE, NULL, '2025-12-30 16:00:00', NULL, NULL, 52, NULL, 19);
+INSERT INTO Solicitud (monto, destino, fecha_solicitud, estado, motivo_estado, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por, id_cliente)
+VALUES
+(200000.00, 'Compra de herramientas industriales', '2025-12-31 09:00:00', TRUE, NULL, '2025-12-31 09:00:00', NULL, NULL, 53, NULL, 10),
+(230000.00, 'Reforma de planta', '2026-01-01 10:30:00', FALSE, 'Falta de documentación técnica', '2026-01-01 10:30:00', NULL, NULL, 55, NULL, 17),
+(102000.00, 'Gastos de mudanza', '2026-01-02 11:45:00', TRUE, NULL, '2026-01-02 11:45:00', NULL, NULL, 56, NULL, 24),
+(335000.00, 'Apertura de nueva oficina', '2026-01-03 14:15:00', TRUE, NULL, '2026-01-03 14:15:00', NULL, NULL, 57, NULL, 32),
+(90000.00, 'Compra de mobiliario de oficina', '2026-01-04 08:50:00', FALSE, 'Cliente con historial irregular', '2026-01-04 08:50:00', NULL, NULL, 58, NULL, 40),
+(210000.00, 'Viaje de capacitación', '2026-01-05 13:20:00', TRUE, NULL, '2026-01-05 13:20:00', NULL, NULL, 59, NULL, 51),
+(152000.00, 'Renovación de flota vehicular', '2026-01-06 15:10:00', TRUE, NULL, '2026-01-06 15:10:00', NULL, NULL, 60, NULL, 57),
+(325000.00, 'Compra de insumos tecnológicos', '2026-01-07 09:40:00', FALSE, 'Falta de garantías comerciales', '2026-01-07 09:40:00', NULL, NULL, 61, NULL, 4),
+(75000.00, 'Mudanza y alquiler', '2026-01-08 12:30:00', TRUE, NULL, '2026-01-08 12:30:00', NULL, NULL, 62, NULL, 26),
+(185000.00, 'Estudios universitarios', '2026-01-09 16:00:00', TRUE, NULL, '2026-01-09 16:00:00', NULL, NULL, 1, NULL, 38);
