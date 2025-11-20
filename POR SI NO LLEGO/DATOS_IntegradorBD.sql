@@ -1001,4 +1001,96 @@ VALUES (41, 'Efectivo', NOW(), NULL, NULL, 1, NULL),
        (58, 'Transferencia', NOW(), NULL, NULL, 18, NULL),
        (59, 'Efectivo', NOW(), NULL, NULL, 19, NULL),
        (60, 'Tarjeta', NOW(), NULL, NULL, 20, NULL);
+-- DNI 40112233 (4 empleados)
+UPDATE Empleado SET DNI_empleado = '40112233' WHERE id_empleado = 11;
+UPDATE Empleado SET DNI_empleado = '40112234' WHERE id_empleado = 21;
+UPDATE Empleado SET DNI_empleado = '40112235' WHERE id_empleado = 37;
+UPDATE Empleado SET DNI_empleado = '40112236' WHERE id_empleado = 45;
 
+-- DNI 45667788 (3 empleados)
+UPDATE Empleado SET DNI_empleado = '45667788' WHERE id_empleado = 16;
+UPDATE Empleado SET DNI_empleado = '45667789' WHERE id_empleado = 26;
+UPDATE Empleado SET DNI_empleado = '45667790' WHERE id_empleado = 46;
+
+-- DNI 39001122 (3 empleados)
+UPDATE Empleado SET DNI_empleado = '39001122' WHERE id_empleado = 20;
+UPDATE Empleado SET DNI_empleado = '39001123' WHERE id_empleado = 30;
+UPDATE Empleado SET DNI_empleado = '39001124' WHERE id_empleado = 42;
+
+-- DNI 42334455 (3 empleados)
+UPDATE Empleado SET DNI_empleado = '42334455' WHERE id_empleado = 13;
+UPDATE Empleado SET DNI_empleado = '42334456' WHERE id_empleado = 23;
+UPDATE Empleado SET DNI_empleado = '42334457' WHERE id_empleado = 49;
+
+-- DNI 43445566 (3 empleados)
+UPDATE Empleado SET DNI_empleado = '43445566' WHERE id_empleado = 14;
+UPDATE Empleado SET DNI_empleado = '43445567' WHERE id_empleado = 24;
+UPDATE Empleado SET DNI_empleado = '43445568' WHERE id_empleado = 50;
+
+-- DNI 44556677 (3 empleados)
+UPDATE Empleado SET DNI_empleado = '44556677' WHERE id_empleado = 15;
+UPDATE Empleado SET DNI_empleado = '44556678' WHERE id_empleado = 25;
+UPDATE Empleado SET DNI_empleado = '44556679' WHERE id_empleado = 51;
+
+-- DNI 38990011 (2 empleados dentro del 1–60)
+UPDATE Empleado SET DNI_empleado = '38990011' WHERE id_empleado = 41;
+UPDATE Empleado SET DNI_empleado = '38990012' WHERE id_empleado = 57;
+
+-- 31678901 (IDs 6, 16, 26, 36)
+UPDATE Cliente SET DNI_cliente = '31678901' WHERE id_cliente = 6;
+UPDATE Cliente SET DNI_cliente = '31678902' WHERE id_cliente = 16;
+UPDATE Cliente SET DNI_cliente = '31678903' WHERE id_cliente = 26;
+UPDATE Cliente SET DNI_cliente = '31678904' WHERE id_cliente = 36;
+
+-- 34890123 (IDs 8, 18, 28, 38)
+UPDATE Cliente SET DNI_cliente = '34890123' WHERE id_cliente = 8;
+UPDATE Cliente SET DNI_cliente = '34890124' WHERE id_cliente = 18;
+UPDATE Cliente SET DNI_cliente = '34890125' WHERE id_cliente = 28;
+UPDATE Cliente SET DNI_cliente = '34890126' WHERE id_cliente = 38;
+
+-- 26901234 (IDs 9, 19, 29, 39)
+UPDATE Cliente SET DNI_cliente = '26901234' WHERE id_cliente = 9;
+UPDATE Cliente SET DNI_cliente = '26901235' WHERE id_cliente = 19;
+UPDATE Cliente SET DNI_cliente = '26901236' WHERE id_cliente = 29;
+UPDATE Cliente SET DNI_cliente = '26901237' WHERE id_cliente = 39;
+
+-- 33012345 (IDs 10, 20, 30, 40)
+UPDATE Cliente SET DNI_cliente = '33012345' WHERE id_cliente = 10;
+UPDATE Cliente SET DNI_cliente = '33012346' WHERE id_cliente = 20;
+UPDATE Cliente SET DNI_cliente = '33012347' WHERE id_cliente = 30;
+UPDATE Cliente SET DNI_cliente = '33012348' WHERE id_cliente = 40;
+
+-- 28123456 (IDs 11, 21, 31, 41)
+UPDATE Cliente SET DNI_cliente = '28123456' WHERE id_cliente = 11;
+UPDATE Cliente SET DNI_cliente = '28123457' WHERE id_cliente = 21;
+UPDATE Cliente SET DNI_cliente = '28123458' WHERE id_cliente = 31;
+UPDATE Cliente SET DNI_cliente = '28123459' WHERE id_cliente = 41;
+
+-- 30234567 (IDs 12, 22, 32, 42)
+UPDATE Cliente SET DNI_cliente = '30234567' WHERE id_cliente = 12;
+UPDATE Cliente SET DNI_cliente = '30234568' WHERE id_cliente = 22;
+UPDATE Cliente SET DNI_cliente = '30234569' WHERE id_cliente = 32;
+UPDATE Cliente SET DNI_cliente = '30234570' WHERE id_cliente = 42;
+
+-- 25345678 (IDs 13, 23, 33, 43)
+UPDATE Cliente SET DNI_cliente = '25345678' WHERE id_cliente = 13;
+UPDATE Cliente SET DNI_cliente = '25345679' WHERE id_cliente = 23;
+UPDATE Cliente SET DNI_cliente = '25345680' WHERE id_cliente = 33;
+UPDATE Cliente SET DNI_cliente = '25345681' WHERE id_cliente = 43;
+
+-- 32456789 (IDs 14, 24, 34, 44)
+UPDATE Cliente SET DNI_cliente = '32456789' WHERE id_cliente = 14;
+UPDATE Cliente SET DNI_cliente = '32456790' WHERE id_cliente = 24;
+UPDATE Cliente SET DNI_cliente = '32456791' WHERE id_cliente = 34;
+UPDATE Cliente SET DNI_cliente = '32456792' WHERE id_cliente = 44;
+
+-- 24567890 (IDs 15, 25, 35, 45)
+UPDATE Cliente SET DNI_cliente = '24567890' WHERE id_cliente = 15;
+UPDATE Cliente SET DNI_cliente = '24567891' WHERE id_cliente = 25;
+UPDATE Cliente SET DNI_cliente = '24567892' WHERE id_cliente = 35;
+UPDATE Cliente SET DNI_cliente = '24567893' WHERE id_cliente = 45;
+
+-- 23789012 (IDs 17, 27, 37)
+UPDATE Cliente SET DNI_cliente = '23789012' WHERE id_cliente = 17;
+UPDATE Cliente SET DNI_cliente = '23789013' WHERE id_cliente = 27;
+UPDATE Cliente SET DNI_cliente = '23789014' WHERE id_cliente = 37;

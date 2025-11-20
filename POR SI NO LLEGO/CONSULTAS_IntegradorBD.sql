@@ -4,10 +4,11 @@ USE financiamiento_kg;
 Esto evita que un empleado modifique datos sin dejar rastro. En este caso lo que pone es el nombre del user de MySQL no el id*/
 DELIMITER $$
 CREATE TRIGGER seguimiento_modificacion
-BEFORE INSERT ON Cliente
-FOR EACH ROW
+    BEFORE INSERT
+    ON cliente
+    FOR EACH ROW
 BEGIN
-    SET NEW.nombre_cliente = UPPER(NEW.nombre_cliente);
+    SET new.nombre_cliente = UPPER(new.nombre_cliente);
 END $$
 
 DELIMITER ;
@@ -16,13 +17,14 @@ DELIMITER ;
 Se aplica penalización cuando un pago llega más de X días tarde.*/
 DELIMITER $$
 CREATE TRIGGER calcular_penalizacion
-BEFORE INSERT ON Pago
-FOR EACH ROW
+    BEFORE INSERT
+    ON pago
+    FOR EACH ROW
 BEGIN
-    IF NEW.demora > 0 THEN
-        SET NEW.penalizacion_mora = NEW.demora * 1000; 
+    IF new.demora > 0 THEN
+        SET new.penalizacion_mora = new.demora * 1000;
     ELSE
-        SET NEW.penalizacion_mora = 0;
+        SET new.penalizacion_mora = 0;
     END IF;
 END;
 
@@ -31,21 +33,22 @@ DELIMITER $$
 /*Trigger: cuando un pago cubre totalmente la cuota → marcar cuota como pagada
 Automaticación típica administrativa.*/
 CREATE TRIGGER cuota_pagada
-AFTER INSERT ON Pago
-FOR EACH ROW
+    AFTER INSERT
+    ON pago
+    FOR EACH ROW
 BEGIN
-    DECLARE total_pagado DECIMAL(10,2);
+    DECLARE total_pagado DECIMAL(10, 2);
 
     SELECT SUM(monto_pagado)
     INTO total_pagado
-    FROM Pago
-    WHERE id_cuota = NEW.id_cuota;
+    FROM pago
+    WHERE id_cuota = new.id_cuota;
 
-    IF total_pagado >= (SELECT monto_total FROM Cuota WHERE id_cuota = NEW.id_cuota) THEN
-        UPDATE Cuota
-        SET estado = 1,
+    IF total_pagado >= (SELECT monto_total FROM cuota WHERE id_cuota = new.id_cuota) THEN
+        UPDATE cuota
+        SET estado                = 1,
             fecha_de_modificacion = NOW()
-        WHERE id_cuota = NEW.id_cuota;
+        WHERE id_cuota = new.id_cuota;
     END IF;
 END $$
 
@@ -56,14 +59,16 @@ Si la solicitud está rechazada (estado = 0), impide que se genere un crédito.*
 DELIMITER $$
 
 CREATE TRIGGER solicitud_rechazada
-BEFORE INSERT ON Credito
-FOR EACH ROW
+    BEFORE INSERT
+    ON credito
+    FOR EACH ROW
 BEGIN
     DECLARE estado_sol BOOLEAN;
 
-    SELECT estado INTO estado_sol
-    FROM Solicitud
-    WHERE id_solicitud = NEW.id_solicitud;
+    SELECT estado
+    INTO estado_sol
+    FROM solicitud
+    WHERE id_solicitud = new.id_solicitud;
 
     IF estado_sol = 0 THEN
         SIGNAL SQLSTATE '45000'
@@ -73,265 +78,259 @@ END;
 
 DELIMITER ;
 
-/*tRIGGER PARA generar cuotas automaticamente*/
+/*tRIGGER PARA generar cuotas automáticamente*/
 DELIMITER $$
 
 CREATE TRIGGER trg_generar_cuotas_credito
-AFTER INSERT ON Credito
-FOR EACH ROW
+    AFTER INSERT
+    ON credito
+    FOR EACH ROW
 BEGIN
     DECLARE i INT DEFAULT 1;
-    DECLARE monto_cuota DECIMAL(10,2);
+    DECLARE monto_cuota DECIMAL(10, 2);
     DECLARE fecha_venc DATE;
 
-    SET monto_cuota = NEW.monto_otorgado / NEW.plazo_devolucion;
+    SET monto_cuota = new.monto_otorgado / new.plazo_devolucion;
 
-    WHILE i <= NEW.plazo_devolucion DO
+    WHILE i <= new.plazo_devolucion
+        DO
 
-        SET fecha_venc = DATE_ADD(NEW.fecha_inicio, INTERVAL i MONTH);
+            SET fecha_venc = DATE_ADD(new.fecha_inicio, INTERVAL i MONTH);
 
-        INSERT INTO Cuota (
-            id_credito,
-            numero_cuota,
-            fecha_de_emision,
-            fecha_de_vencimiento,
-            monto_total,
-            estado,
-            fecha_de_alta,
-            creado_por
-        )
-        VALUES (
-            NEW.id_credito,
-            i,
-            NEW.fecha_inicio,
-            fecha_venc,
-            monto_cuota,
-            0,
-            NOW(),
-            NEW.creado_por
-        );
+            INSERT INTO cuota (id_credito,
+                               numero_cuota,
+                               fecha_de_emision,
+                               fecha_de_vencimiento,
+                               monto_total,
+                               estado,
+                               fecha_de_alta,
+                               creado_por)
+            VALUES (new.id_credito,
+                    i,
+                    new.fecha_inicio,
+                    fecha_venc,
+                    monto_cuota,
+                    0,
+                    NOW(),
+                    new.creado_por);
 
-        SET i = i + 1;
-    END WHILE;
+            SET i = i + 1;
+        END WHILE;
 END$$
 
 DELIMITER ;
 
 /*INDICES*/
 CREATE UNIQUE INDEX idx_dni_cliente
-ON Cliente(DNI_cliente);
+    ON cliente (dni_cliente);
 
 CREATE INDEX idx_solicitud_ciente
-ON Solicitud(id_cliente);
+    ON solicitud (id_cliente);
 
 CREATE INDEX idx_pago_cuota
-ON Pago(id_cuota);
+    ON pago (id_cuota);
 
 CREATE INDEX idx_cuota_credito_estado
-ON Cuota(id_credito, estado);
+    ON cuota (id_credito, estado);
 
 CREATE INDEX idx_producto_financiero
-ON Producto_financiero(nombre_producto_financiero);
+    ON producto_financiero (nombre_producto_financiero);
 
 
 
 /*CONSULTAS*/
 /*Ranking mayores montos*/
-SELECT 
-    c.id_cliente,
-    c.nombre_cliente,
-    c.apellido_cliente,
-    SUM(cr.monto_otorgado) AS total_otorgado,
-    RANK() OVER (ORDER BY SUM(cr.monto_otorgado) DESC) AS ranking
-FROM Cliente c
-JOIN Solicitud s ON c.id_cliente = s.id_cliente
-JOIN Credito cr ON s.id_solicitud = cr.id_solicitud
+SELECT c.id_cliente,
+       c.nombre_cliente,
+       c.apellido_cliente,
+       SUM(cr.monto_otorgado)                             AS total_otorgado,
+       RANK() OVER (ORDER BY SUM(cr.monto_otorgado) DESC) AS ranking
+FROM cliente c
+         JOIN solicitud s ON c.id_cliente = s.id_cliente
+         JOIN credito cr ON s.id_solicitud = cr.id_solicitud
 GROUP BY c.id_cliente;
 
 /*Monto promedio*/
-SELECT 
-    c.tipo_de_persona,
-    COUNT(s.id_solicitud) AS total_solicitudes,
-    AVG(s.monto) AS promedio_solicitado
-FROM Cliente c
-JOIN Solicitud s ON c.id_cliente = s.id_cliente
+SELECT c.tipo_de_persona,
+       COUNT(s.id_solicitud) AS total_solicitudes,
+       AVG(s.monto)          AS promedio_solicitado
+FROM cliente c
+         JOIN solicitud s ON c.id_cliente = s.id_cliente
 GROUP BY c.tipo_de_persona
 HAVING AVG(s.monto) > 50000;
 
-/*Creditos con cuotas atrasadas*/
-SELECT 
-    cr.id_credito,
-    cr.monto_otorgado,
-    cu.id_cuota,
-    cu.fecha_de_vencimiento
-FROM Credito cr
-JOIN Cuota cu ON cr.id_credito = cu.id_credito
+/*Créditos con cuotas atrasadas*/
+SELECT cr.id_credito,
+       cr.monto_otorgado,
+       cu.id_cuota,
+       cu.fecha_de_vencimiento
+FROM credito cr
+         JOIN cuota cu ON cr.id_credito = cu.id_credito
 WHERE cu.estado = FALSE
   AND DATEDIFF(NOW(), cu.fecha_de_vencimiento) > 30
-  AND NOT EXISTS (
-      SELECT 1 FROM Pago p
-      WHERE p.id_cuota = cu.id_cuota
-  );
+  AND NOT EXISTS (SELECT 1
+                  FROM pago p
+                  WHERE p.id_cuota = cu.id_cuota);
 
 /*total recaudado por surcusal*/
-SELECT 
-    s.nombre_sucursal,
-    SUM(p.monto_pagado) AS total_recaudado
-FROM Sucursal s
-JOIN Empleado e ON s.id_sucursal = e.id_sucursal
-JOIN Pago p ON e.id_empleado = p.creado_por
+SELECT s.nombre_sucursal,
+       SUM(p.monto_pagado) AS total_recaudado
+FROM sucursal s
+         JOIN empleado e ON s.id_sucursal = e.id_sucursal
+         JOIN pago p ON e.id_empleado = p.creado_por
 GROUP BY s.id_sucursal;
 
 /*promedio de tasas historicas*/
-SELECT 
-    pf.nombre_producto_financiero,
-    (SELECT AVG(h.tasa)
-     FROM Historial_de_tasas h
-     WHERE h.id_producto_financiero = pf.id_producto_financiero) AS promedio_tasa
-FROM Producto_financiero pf;
+SELECT pf.nombre_producto_financiero,
+       (SELECT AVG(h.tasa)
+        FROM historial_de_tasas h
+        WHERE h.id_producto_financiero = pf.id_producto_financiero) AS promedio_tasa
+FROM producto_financiero pf;
 
 /*Solicitudes rechazadas*/
-WITH rechazadas AS (
-    SELECT *
-    FROM Solicitud
-    WHERE estado = FALSE
-)
-SELECT 
-    c.id_cliente,
-    c.nombre_cliente,
-    COUNT(r.id_solicitud) AS rechazos,
-    GROUP_CONCAT(r.motivo_estado SEPARATOR ', ') AS motivos
-FROM Cliente c
-JOIN rechazadas r ON c.id_cliente = r.id_cliente
+WITH rechazadas AS (SELECT *
+                    FROM solicitud
+                    WHERE estado = FALSE)
+SELECT c.id_cliente,
+       c.nombre_cliente,
+       COUNT(r.id_solicitud)                        AS rechazos,
+       GROUP_CONCAT(r.motivo_estado SEPARATOR ', ') AS motivos
+FROM cliente c
+         JOIN rechazadas r ON c.id_cliente = r.id_cliente
 GROUP BY c.id_cliente;
 
 /*Ingreso*/
-WITH ingresos AS (
-    SELECT 
-        c.*,
-        NTILE(5) OVER (ORDER BY ingreso_declarado) AS quintil
-    FROM Cliente c
-)
+WITH ingresos AS (SELECT c.*,
+                         NTILE(5) OVER (ORDER BY ingreso_declarado) AS quintil
+                  FROM cliente c)
 SELECT *
 FROM ingresos
 WHERE quintil = 5;
 
-/*productos financieros mas utiliados*/
-SELECT 
-    pf.nombre_producto_financiero,
-    c.tipo_de_persona,
-    COUNT(cr.id_credito) AS usos
-FROM Producto_financiero pf
-JOIN Credito cr ON pf.id_producto_financiero = cr.id_producto_financiero
-JOIN Solicitud s ON cr.id_solicitud = s.id_solicitud
-JOIN Cliente c ON s.id_cliente = c.id_cliente
+/*productos financieros más útilizados*/
+SELECT pf.nombre_producto_financiero,
+       c.tipo_de_persona,
+       COUNT(cr.id_credito) AS usos
+FROM producto_financiero pf
+         JOIN credito cr ON pf.id_producto_financiero = cr.id_producto_financiero
+         JOIN solicitud s ON cr.id_solicitud = s.id_solicitud
+         JOIN cliente c ON s.id_cliente = c.id_cliente
 GROUP BY pf.id_producto_financiero, c.tipo_de_persona;
 
 /*Solicitudes que superan el ingreso mensual del cliente*/
-SELECT 
-    s.id_solicitud,
-    s.monto,
-    c.ingreso_declarado
-FROM Solicitud s
-JOIN Cliente c ON s.id_cliente = c.id_cliente
+SELECT s.id_solicitud,
+       s.monto,
+       c.ingreso_declarado
+FROM solicitud s
+         JOIN cliente c ON s.id_cliente = c.id_cliente
 WHERE s.estado = TRUE
   AND s.monto > c.ingreso_declarado;
 
 /*creditos refinanciados*/
-SELECT 
-    c1.id_credito AS credito_original,
-    c2.id_credito AS credito_refinanciado,
-    c2.monto_otorgado
-FROM Credito c1
-JOIN Credito c2 ON c2.id_credito_padre = c1.id_credito;
+SELECT c1.id_credito AS credito_original,
+       c2.id_credito AS credito_refinanciado,
+       c2.monto_otorgado
+FROM credito c1
+         JOIN credito c2 ON c2.id_credito_padre = c1.id_credito;
 
-/*Productos con tasas historicas mayor a la actual*/
-SELECT 
-    pf.nombre_producto_financiero,
-    h.tasa AS tasa_actual,
-    pf.tasa_base
-FROM Producto_financiero pf
-JOIN Historial_de_tasas h 
-    ON pf.id_producto_financiero = h.id_producto_financiero
-WHERE h.fecha_inicio = (
-    SELECT MAX(h2.fecha_inicio)
-    FROM Historial_de_tasas h2
-    WHERE h2.id_producto_financiero = pf.id_producto_financiero
-)
-AND h.tasa > pf.tasa_base;
+/*Productos con tasas históricas mayor a la actual*/
+SELECT pf.nombre_producto_financiero,
+       h.tasa AS tasa_actual,
+       pf.tasa_base
+FROM producto_financiero pf
+         JOIN historial_de_tasas h
+              ON pf.id_producto_financiero = h.id_producto_financiero
+WHERE h.fecha_inicio = (SELECT MAX(h2.fecha_inicio)
+                        FROM historial_de_tasas h2
+                        WHERE h2.id_producto_financiero = pf.id_producto_financiero)
+  AND h.tasa > pf.tasa_base;
 
-/*roles mas frecuentes en empleados*/
-SELECT 
-    DNI_empleado,
-    COUNT(*) AS roles_distintos
-FROM Empleado
-GROUP BY DNI_empleado
+/*roles más frecuentes en empleados*/
+SELECT dni_empleado,
+       COUNT(*) AS roles_distintos
+FROM empleado
+GROUP BY dni_empleado
 HAVING COUNT(*) > 1;
 
 /*Promedio de penalizacion por tipo de pago*/
-SELECT 
-    mp.metodo,
-    AVG(p.penalizacion_mora) AS prom_penalizacion
-FROM Metodo_de_pago mp
-JOIN Pago p ON mp.id_pago = p.id_pago
+SELECT mp.metodo,
+       AVG(p.penalizacion_mora) AS prom_penalizacion
+FROM metodo_de_pago mp
+         JOIN pago p ON mp.id_pago = p.id_pago
 GROUP BY mp.metodo;
 
-/*campañas mas efectivas*/
-SELECT 
-    id_producto_campana,
-    resultados,
-    RANK() OVER (ORDER BY resultados DESC) AS ranking
-FROM Producto_campana;
+/*campañas más efectivas*/
+SELECT id_producto_campana,
+       resultado,
+       RANK() OVER (ORDER BY resultado DESC) AS ranking
+FROM producto_campana;
 
-/*creditos con cuota mas impagas que pagas*/
-SELECT 
-    cr.id_credito,
-    SUM(CASE WHEN cu.estado = TRUE THEN 1 ELSE 0 END) AS pagadas,
-    SUM(CASE WHEN cu.estado = FALSE THEN 1 ELSE 0 END) AS impagas
-FROM Credito cr
-JOIN Cuota cu ON cr.id_credito = cu.id_credito
+/*creditos con cuota más impagas que pagas*/
+SELECT cr.id_credito,
+       SUM(CASE WHEN cu.estado = TRUE THEN 1 ELSE 0 END)  AS pagadas,
+       SUM(CASE WHEN cu.estado = FALSE THEN 1 ELSE 0 END) AS impagas
+FROM credito cr
+         JOIN cuota cu ON cr.id_credito = cu.id_credito
 GROUP BY cr.id_credito
 HAVING SUM(CASE WHEN cu.estado = TRUE THEN 1 ELSE 0 END) >
        SUM(CASE WHEN cu.estado = FALSE THEN 1 ELSE 0 END);
-       
+
 /*Primer y ultimo pago*/
-SELECT 
-    c.id_cliente,
-    p.id_pago,
-    p.fecha_de_pago,
-    LAG(p.fecha_de_pago) OVER (PARTITION BY c.id_cliente ORDER BY p.fecha_de_pago) AS pago_anterior,
-    LEAD(p.fecha_de_pago) OVER (PARTITION BY c.id_cliente ORDER BY p.fecha_de_pago) AS pago_siguiente
-FROM Cliente c
-JOIN Solicitud s ON c.id_cliente = s.id_cliente
-JOIN Credito cr ON s.id_solicitud = cr.id_solicitud
-JOIN Cuota cu ON cr.id_credito = cu.id_credito
-JOIN Pago p ON cu.id_cuota = p.id_cuota;
+SELECT c.id_cliente,
+       p.id_pago,
+       p.fecha_de_pago,
+       LAG(p.fecha_de_pago) OVER (PARTITION BY c.id_cliente ORDER BY p.fecha_de_pago)  AS pago_anterior,
+       LEAD(p.fecha_de_pago) OVER (PARTITION BY c.id_cliente ORDER BY p.fecha_de_pago) AS pago_siguiente
+FROM cliente c
+         JOIN solicitud s ON c.id_cliente = s.id_cliente
+         JOIN credito cr ON s.id_solicitud = cr.id_solicitud
+         JOIN cuota cu ON cr.id_credito = cu.id_credito
+         JOIN pago p ON cu.id_cuota = p.id_cuota;
 
 /*cuando el pago supera el 80% del credito*/
-SELECT 
-    c.id_cliente,
-    c.nombre_cliente,
-    (SELECT AVG(p.monto_pagado)
-     FROM Solicitud s2
-     JOIN Credito cr2 ON s2.id_solicitud = cr2.id_solicitud
-     JOIN Cuota cu2 ON cr2.id_credito = cu2.id_credito
-     JOIN Pago p ON cu2.id_cuota = p.id_cuota
-     WHERE s2.id_cliente = c.id_cliente) AS promedio_pago,
-    (SELECT SUM(cr3.monto_otorgado)
-     FROM Solicitud s3
-     JOIN Credito cr3 ON s3.id_solicitud = cr3.id_solicitud
-     WHERE s3.id_cliente = c.id_cliente) AS total_creditos
-FROM Cliente c
+SELECT c.id_cliente,
+       c.nombre_cliente,
+       (SELECT AVG(p.monto_pagado)
+        FROM solicitud s2
+                 JOIN credito cr2 ON s2.id_solicitud = cr2.id_solicitud
+                 JOIN cuota cu2 ON cr2.id_credito = cu2.id_credito
+                 JOIN pago p ON cu2.id_cuota = p.id_cuota
+        WHERE s2.id_cliente = c.id_cliente) AS promedio_pago,
+       (SELECT SUM(cr3.monto_otorgado)
+        FROM solicitud s3
+                 JOIN credito cr3 ON s3.id_solicitud = cr3.id_solicitud
+        WHERE s3.id_cliente = c.id_cliente) AS total_creditos
+FROM cliente c
 HAVING promedio_pago > total_creditos * 0.8;
 
+/*
+SELECT c.id_cliente,
+       c.nombre_cliente,
+       promedio_pago,
+       total_creditos
+FROM cliente c
+         JOIN (SELECT s2.id_cliente,
+                      AVG(p.monto_pagado) AS promedio_pago
+               FROM solicitud s2
+                        JOIN credito cr2 ON s2.id_solicitud = cr2.id_solicitud
+                        JOIN cuota cu2 ON cr2.id_credito = cu2.id_credito
+                        JOIN pago p ON cu2.id_cuota = p.id_cuota
+               GROUP BY s2.id_cliente) AS pagos ON c.id_cliente = pagos.id_cliente
+         JOIN (SELECT s3.id_cliente,
+                      SUM(cr3.monto_otorgado) AS total_creditos
+               FROM solicitud s3
+                        JOIN credito cr3 ON s3.id_solicitud = cr3.id_solicitud
+               GROUP BY s3.id_cliente) AS creditos ON c.id_cliente = creditos.id_cliente
+WHERE promedio_pago > total_creditos * 0.8;
+*/
+
 /*Ranking por puntaje riesgo*/
-SELECT 
-    c.id_cliente,
-    c.nombre_cliente,
-    AVG(s.puntaje_riesgo) AS riesgo_promedio,
-    RANK() OVER (ORDER BY AVG(puntaje_riesgo) DESC) AS ranking_riesgo
-FROM Cliente c
-JOIN Solicitud s ON c.id_cliente = s.id_cliente
+SELECT c.id_cliente,
+       c.nombre_cliente,
+       AVG(s.puntaje_riesgo)                           AS riesgo_promedio,
+       RANK() OVER (ORDER BY AVG(puntaje_riesgo) DESC) AS ranking_riesgo
+FROM cliente c
+         JOIN solicitud s ON c.id_cliente = s.id_cliente
 GROUP BY c.id_cliente;
 
 
