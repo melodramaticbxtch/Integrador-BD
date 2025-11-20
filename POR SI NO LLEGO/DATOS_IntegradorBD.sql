@@ -81,7 +81,7 @@ INSERT INTO Empleado (id_sucursal, DNI_empleado, nombre_empleado, apellido_emple
 (4, '45223344', 'Gonzalo', 'Guerra', 'Analista Crediticio', 'gonzalo.guerra@financiera.com', '1112345682', '2025-05-12 09:00:00', 'Sistema');
 
 /*TABLA PRODUCTO CAMPANA*/
-INSERT INTO Producto_campana (tasa_promocional, vigencia, resultados, fecha_inicio, fecha_de_alta, fecha_de_baja, fecha_modificacion, creado_por, modificado_por)
+INSERT INTO Producto_campana (tasa_promocional, vigencia, resultados, fecha_inicio, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por)
 VALUES
 (2.5, '2025-12-01 00:00:00', 100.0, '2025-11-01 08:00:00', '2025-11-01 08:00:00', NULL, NULL, 1, NULL),
 (3.1, '2025-12-05 00:00:00', 150.0, '2025-11-02 09:00:00', '2025-11-02 09:00:00', NULL, NULL, 2, NULL),
@@ -117,7 +117,7 @@ VALUES
 (2.0, '2026-05-20 00:00:00', 100.0, '2025-12-18 15:00:00', '2025-12-18 15:00:00', NULL, NULL, 50, NULL),
 (2.5, '2026-05-25 00:00:00', 135.0, '2025-12-19 16:00:00', '2025-12-19 16:00:00', NULL, NULL, 57, NULL),
 (1.8, '2026-05-30 00:00:00', 95.0, '2025-12-20 17:00:00', '2025-12-20 17:00:00', NULL, NULL, 62, NULL);
-INSERT INTO Producto_campana (tasa_promocional, vigencia, resultados, fecha_inicio, fecha_de_alta, fecha_de_baja, fecha_modificacion, creado_por, modificado_por)
+INSERT INTO Producto_campana (tasa_promocional, vigencia, resultados, fecha_inicio, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por)
 VALUES
 (2.0, '2026-06-01 00:00:00', 110.0, '2025-12-21 08:00:00', '2025-12-21 08:00:00', NULL, NULL, 1, NULL),
 (3.1, '2026-06-05 00:00:00', 140.0, '2025-12-22 09:00:00', '2025-12-22 09:00:00', NULL, NULL, 8, NULL),
@@ -129,7 +129,7 @@ VALUES
 (2.5, '2026-07-05 00:00:00', 130.0, '2025-12-28 15:00:00', '2025-12-28 15:00:00', NULL, NULL, 51, NULL),
 (2.0, '2026-07-10 00:00:00', 100.0, '2025-12-29 16:00:00', '2025-12-29 16:00:00', NULL, NULL, 58, NULL),
 (3.1, '2026-07-15 00:00:00', 145.0, '2025-12-30 17:00:00', '2025-12-30 17:00:00', NULL, NULL, 62, NULL);
-INSERT INTO Producto_campana (tasa_promocional, vigencia, resultados, fecha_inicio, fecha_de_alta, fecha_de_baja, fecha_modificacion, creado_por, modificado_por)
+INSERT INTO Producto_campana (tasa_promocional, vigencia, resultados, fecha_inicio, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por)
 VALUES
 (1.8, '2026-07-20 00:00:00', 90.0, '2025-12-31 08:00:00', '2025-12-31 08:00:00', NULL, NULL, 4, NULL),
 (2.5, '2026-07-25 00:00:00', 120.0, '2026-01-01 09:00:00', '2026-01-01 09:00:00', NULL, NULL, 11, NULL),
@@ -487,6 +487,111 @@ VALUES
 /* 60 */ (60, 70, NULL, 175750.00, '2026-01-12 16:00:00', DATE_ADD('2026-01-12 16:00:00', INTERVAL 24 MONTH), 0.65, 24, 'Refinanciado', '2026-01-12 16:00:00', NULL, NULL, 1, NULL);
 
 /*TABLA HISTORIAL DE TASAS*/
+INSERT INTO Historial_de_tasas (id_producto_financiero, tasa, fecha_inicio, fecha_fin, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por) VALUES
+
+-- Bloque 1: Productos 1-40 (Tasa actual)
+-- Productos 1-10
+(1, 0.55, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 54, NULL),
+(2, 0.39, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 50, NULL),
+(3, 0.66, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 46, NULL),
+(4, 0.48, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 42, NULL),
+(5, 0.71, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 38, NULL),
+(6, 0.57, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 34, NULL),
+(7, 0.75, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 30, NULL),
+(8, 0.60, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 26, NULL),
+(9, 0.46, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 22, NULL),
+(10, 0.34, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 21, NULL),
+
+-- Productos 11-20
+(11, 0.26, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 20, NULL),
+(12, 0.28, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 8, NULL),
+(13, 0.31, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 4, NULL),
+(14, 0.37, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 61, NULL),
+(15, 0.32, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 57, NULL),
+(16, 0.43, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 53, NULL),
+(17, 0.15, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 49, NULL),
+(18, 0.67, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 45, NULL),
+(19, 0.36, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 41, NULL),
+(20, 0.50, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 37, NULL),
+
+-- Productos 21-30
+(21, 0.30, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 37, NULL),
+(22, 0.21, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 33, NULL),
+(23, 0.23, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 29, NULL),
+(24, 0.24, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 25, NULL),
+(25, 0.17, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 19, NULL),
+(26, 0.39, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 18, NULL),
+(27, 0.26, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 17, NULL),
+(28, 0.16, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 7, NULL),
+(29, 0.33, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 3, NULL),
+(30, 0.18, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 60, NULL),
+
+-- Productos 31-40
+(31, 0.50, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 52, NULL),
+(32, 0.44, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 48, NULL),
+(33, 0.42, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 44, NULL),
+(34, 0.53, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 40, NULL),
+(35, 0.65, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 36, NULL),
+(36, 0.69, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 32, NULL),
+(37, 0.77, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 28, NULL),
+(38, 0.10, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 24, NULL),
+(39, 0.84, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 16, NULL),
+(40, 0.40, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 15, NULL),
+
+-- Bloque 2: Productos 41-50 (Historial de 2 tasas)
+-- Producto 41: Hipotecario Cliente Preferencial (Base 0.23)
+(41, 0.25, '2023-05-01 09:00:00', '2024-04-30 23:59:59', '2023-04-29 08:00:00', NULL, '2024-04-30 08:00:00', 14, 14), -- Antigua
+(41, 0.23, '2024-05-01 09:00:00', NULL, '2024-04-30 08:00:00', NULL, NULL, 14, NULL), -- Actual
+
+-- Producto 42: Línea de Crédito Pyme Flexible (Base 0.28)
+(42, 0.30, '2023-05-01 09:00:00', '2024-04-30 23:59:59', '2023-04-29 08:00:00', NULL, '2024-04-30 08:00:00', 10, 10), -- Antigua
+(42, 0.27, '2024-05-01 09:00:00', NULL, '2024-04-30 08:00:00', NULL, NULL, 10, NULL), -- Actual
+
+-- Producto 43: Crédito Prendario Motos (Base 0.55)
+(43, 0.58, '2023-07-01 09:00:00', '2024-06-30 23:59:59', '2023-06-29 08:00:00', NULL, '2024-06-30 08:00:00', 6, 5), -- Antigua
+(43, 0.54, '2024-07-01 09:00:00', NULL, '2024-06-30 08:00:00', NULL, NULL, 5, NULL), -- Actual
+
+-- Producto 44: Fianza de Alquiler Comercial (Base 0.45)
+(44, 0.47, '2023-08-01 09:00:00', '2024-03-31 23:59:59', '2023-07-30 08:00:00', NULL, '2024-03-31 08:00:00', 2, 59), -- Antigua
+(44, 0.45, '2024-04-01 09:00:00', NULL, '2024-03-31 08:00:00', NULL, NULL, 59, NULL), -- Actual
+
+-- Producto 45: Crédito para Exportación Directa (Base 0.16)
+(45, 0.18, '2023-01-01 09:00:00', '2024-01-31 23:59:59', '2022-12-30 08:00:00', NULL, '2024-01-31 08:00:00', 59, 59), -- Antigua
+(45, 0.15, '2024-02-01 09:00:00', NULL, '2024-01-31 08:00:00', NULL, NULL, 59, NULL), -- Actual
+
+-- Producto 46: Préstamo Capitalización Rural (Base 0.20)
+(46, 0.21, '2023-03-01 09:00:00', '2024-03-31 23:59:59', '2023-02-28 08:00:00', NULL, '2024-03-31 08:00:00', 55, 55), -- Antigua
+(46, 0.20, '2024-04-01 09:00:00', NULL, '2024-03-31 08:00:00', NULL, NULL, 55, NULL), -- Actual
+
+-- Producto 47: Hipotecario Segunda Vivienda (Base 0.35)
+(47, 0.37, '2023-06-01 09:00:00', '2024-05-31 23:59:59', '2023-05-30 08:00:00', NULL, '2024-05-31 08:00:00', 51, 51), -- Antigua
+(47, 0.34, '2024-06-01 09:00:00', NULL, '2024-05-31 08:00:00', NULL, NULL, 51, NULL), -- Actual
+
+-- Producto 48: Préstamo Refuerzo (Base 0.62)
+(48, 0.65, '2023-11-01 09:00:00', '2024-07-31 23:59:59', '2023-10-30 08:00:00', NULL, '2024-07-31 08:00:00', 47, 47), -- Antigua
+(48, 0.60, '2024-08-01 09:00:00', NULL, '2024-07-31 08:00:00', NULL, NULL, 47, NULL), -- Actual
+
+-- Producto 49: Descuento de E-Cheqs (Base 0.23)
+(49, 0.25, '2023-10-01 09:00:00', '2024-02-29 23:59:59', '2023-09-30 08:00:00', NULL, '2024-02-29 08:00:00', 43, 43), -- Antigua
+(49, 0.24, '2024-03-01 09:00:00', NULL, '2024-02-29 08:00:00', NULL, NULL, 43, NULL), -- Actual
+
+-- Producto 50: Garantía de Cumplimiento (Base 0.17)
+(50, 0.19, '2023-02-01 09:00:00', '2024-02-29 23:59:59', '2023-01-30 08:00:00', NULL, '2024-02-29 08:00:00', 39, 39), -- Antigua
+(50, 0.17, '2024-03-01 09:00:00', NULL, '2024-02-29 08:00:00', NULL, NULL, 39, NULL), -- Actual
+
+-- Bloque 3: Productos 51-60 (Tasa actual)
+-- Productos 51-60
+(51, 0.81, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 35, NULL),
+(52, 0.38, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 31, NULL),
+(53, 0.42, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 27, NULL),
+(54, 0.59, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 23, NULL),
+(55, 0.35, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 13, NULL),
+(56, 0.70, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 12, NULL),
+(57, 0.88, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 11, NULL),
+(58, 0.63, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 9, NULL),
+(59, 0.30, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 5, NULL),
+(60, 0.74, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 1, NULL);
+
 /*TABLA CUOTAS*/
 INSERT INTO Cuota (id_credito, numero_cuota, fecha_de_emision, fecha_de_vencimiento, monto_total, estado, fecha_de_alta, creado_por, modificado_por)
 VALUES
@@ -530,6 +635,29 @@ VALUES
 (298, 1, '2026-01-09 16:00:00', '2026-02-09 16:00:00', 8576.94, 0, '2026-01-09 16:00:00', 1, NULL),
 (299, 1, '2026-01-10 12:30:00', '2026-02-10 12:30:00', 7322.91, 0, '2026-01-10 12:30:00', 62, NULL),
 (300, 1, '2026-01-12 16:00:00', '2026-02-12 16:00:00', 7322.91, 0, '2026-01-12 16:00:00', 1, NULL);
+INSERT INTO Cuota (id_credito, numero_cuota, fecha_de_emision, fecha_de_vencimiento, monto_total, estado, fecha_de_alta, creado_por, modificado_por)
+VALUES
+(241, 2, '2025-12-02 10:00:00', '2026-01-02 10:00:00', 3958.33, 0, '2025-12-02 10:00:00', 1, NULL),
+(241, 3, '2026-01-02 10:00:00', '2026-02-02 10:00:00', 3958.33, 0, '2026-01-02 10:00:00', 1, NULL),
+(243, 2, '2025-12-06 09:15:00', '2026-01-06 09:15:00', 3760.42, 0, '2025-12-06 09:15:00', 3, NULL),
+(243, 3, '2026-01-06 09:15:00', '2026-02-06 09:15:00', 3760.42, 0, '2026-01-06 09:15:00', 3, NULL),
+(244, 2, '2025-12-08 14:45:00', '2026-01-08 14:45:00', 9236.11, 0, '2025-12-08 14:45:00', 4, NULL),
+(244, 3, '2026-01-08 14:45:00', '2026-02-08 14:45:00', 9236.11, 0, '2026-01-08 14:45:00', 4, NULL),
+(246, 2, '2025-12-12 13:00:00', '2026-01-12 13:00:00', 4750.00, 0, '2025-12-12 13:00:00', 6, NULL),
+(246, 3, '2026-01-12 13:00:00', '2026-02-12 13:00:00', 4750.00, 0, '2026-01-12 13:00:00', 6, NULL),
+(247, 2, '2025-12-14 16:10:00', '2026-01-14 16:10:00', 4750.00, 0, '2025-12-14 16:10:00', 7, NULL),
+(247, 3, '2026-01-14 16:10:00', '2026-02-14 16:10:00', 4750.00, 0, '2026-01-14 16:10:00', 7, NULL),
+(249, 2, '2025-12-18 12:00:00', '2026-01-18 12:00:00', 2577.08, 0, '2025-12-18 12:00:00', 9, NULL),
+(249, 3, '2026-01-18 12:00:00', '2026-02-18 12:00:00', 2577.08, 0, '2026-01-18 12:00:00', 9, NULL),
+(250, 2, '2025-12-20 15:45:00', '2026-01-20 15:45:00', 6333.33, 0, '2025-12-20 15:45:00', 10, NULL),
+(250, 3, '2026-01-20 15:45:00', '2026-02-20 15:45:00', 6333.33, 0, '2026-01-20 15:45:00', 10, NULL),
+(251, 2, '2025-12-22 09:00:00', '2026-01-22 09:00:00', 5277.77, 0, '2025-12-22 09:00:00', 11, NULL),
+(251, 3, '2026-01-22 09:00:00', '2026-02-22 09:00:00', 5277.77, 0, '2026-01-22 09:00:00', 11, NULL),
+(253, 2, '2025-12-24 11:45:00', '2026-01-24 11:45:00', 3760.42, 0, '2025-12-24 11:45:00', 13, NULL),
+(253, 3, '2026-01-24 11:45:00', '2026-02-24 11:45:00', 3760.42, 0, '2026-01-24 11:45:00', 13, NULL),
+(254, 2, '2026-01-02 09:00:00', '2026-02-02 09:00:00', 11604.16, 0, '2026-01-02 09:00:00', 21, NULL),
+(254, 3, '2026-02-02 09:00:00', '2026-03-02 09:00:00', 11604.16, 0, '2026-02-02 09:00:00', 21, NULL);
+
 
 /*TABLA PAGO*/
 SET @penalidad_por_dia = 1000;
@@ -576,6 +704,34 @@ VALUES
 (78, DATE_ADD('2026-01-09 16:00:00', INTERVAL 0 DAY), 308750.00 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 1, NULL),
 (79, DATE_ADD('2026-01-10 12:30:00', INTERVAL 2 DAY), 175750.00 + 2*@penalidad_por_dia, 2, 2*@penalidad_por_dia, NOW(), 62, NULL),
 (80, DATE_ADD('2026-01-12 16:00:00', INTERVAL 1 DAY), 7322.91 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 1, NULL);
+SET @penalidad_por_dia = 1000;
+
+INSERT INTO Pago (id_cuota, fecha_de_pago, monto_pagado, demora, penalizacion_mora, fecha_de_alta, creado_por, modificado_por)
+VALUES
+-- Cuotas número 2
+(41, DATE_ADD('2026-01-02 10:00:00', INTERVAL 0 DAY), 3958.33 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 1, NULL),
+(42, DATE_ADD('2026-01-06 09:15:00', INTERVAL 1 DAY), 3760.42 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 3, NULL),
+(43, DATE_ADD('2026-01-08 14:45:00', INTERVAL 0 DAY), 9236.11 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 4, NULL),
+(44, DATE_ADD('2026-01-12 13:00:00', INTERVAL 2 DAY), 4750.00 + 2*@penalidad_por_dia, 2, 2*@penalidad_por_dia, NOW(), 6, NULL),
+(45, DATE_ADD('2026-01-14 16:10:00', INTERVAL 0 DAY), 4750.00 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 7, NULL),
+(46, DATE_ADD('2026-01-18 12:00:00', INTERVAL 1 DAY), 2577.08 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 9, NULL),
+(47, DATE_ADD('2026-01-20 15:45:00', INTERVAL 0 DAY), 6333.33 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 10, NULL),
+(48, DATE_ADD('2026-01-22 09:00:00', INTERVAL 2 DAY), 5277.77 + 2*@penalidad_por_dia, 2, 2*@penalidad_por_dia, NOW(), 11, NULL),
+(49, DATE_ADD('2026-01-24 11:45:00', INTERVAL 0 DAY), 3760.42 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 13, NULL),
+(50, DATE_ADD('2026-02-02 09:00:00', INTERVAL 1 DAY), 11604.16 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 21, NULL),
+
+-- Cuotas número 3
+(51, DATE_ADD('2026-02-02 10:00:00', INTERVAL 0 DAY), 3958.33 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 1, NULL),
+(52, DATE_ADD('2026-02-06 09:15:00', INTERVAL 1 DAY), 3760.42 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 3, NULL),
+(53, DATE_ADD('2026-02-08 14:45:00', INTERVAL 0 DAY), 9236.11 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 4, NULL),
+(54, DATE_ADD('2026-02-12 13:00:00', INTERVAL 2 DAY), 4750.00 + 2*@penalidad_por_dia, 2, 2*@penalidad_por_dia, NOW(), 6, NULL),
+(55, DATE_ADD('2026-02-14 16:10:00', INTERVAL 0 DAY), 4750.00 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 7, NULL),
+(56, DATE_ADD('2026-02-18 12:00:00', INTERVAL 1 DAY), 2577.08 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 9, NULL),
+(57, DATE_ADD('2026-02-20 15:45:00', INTERVAL 0 DAY), 6333.33 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 10, NULL),
+(58, DATE_ADD('2026-02-22 09:00:00', INTERVAL 2 DAY), 5277.77 + 2*@penalidad_por_dia, 2, 2*@penalidad_por_dia, NOW(), 11, NULL),
+(59, DATE_ADD('2026-02-24 11:45:00', INTERVAL 0 DAY), 3760.42 + 0*@penalidad_por_dia, 0, 0*@penalidad_por_dia, NOW(), 13, NULL),
+(60, DATE_ADD('2026-03-02 09:00:00', INTERVAL 1 DAY), 11604.16 + 1*@penalidad_por_dia, 1, 1*@penalidad_por_dia, NOW(), 21, NULL);
+
 
 /*TABLA METODO DE PAGO*/
 INSERT INTO Metodo_de_pago (id_pago, metodo, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por)
@@ -620,3 +776,26 @@ VALUES
 (38, 'Tarjeta', NOW(), NULL, NULL, 38, NULL),
 (39, 'Transferencia', NOW(), NULL, NULL, 39, NULL),
 (40, 'Efectivo', NOW(), NULL, NULL, 40, NULL);
+INSERT INTO Metodo_de_pago (id_pago, metodo, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por)
+VALUES
+(41, 'Efectivo', NOW(), NULL, NULL, 1, NULL),
+(42, 'Tarjeta', NOW(), NULL, NULL, 2, NULL),
+(43, 'Transferencia', NOW(), NULL, NULL, 3, NULL),
+(44, 'Efectivo', NOW(), NULL, NULL, 4, NULL),
+(45, 'Tarjeta', NOW(), NULL, NULL, 5, NULL),
+(46, 'Transferencia', NOW(), NULL, NULL, 6, NULL),
+(47, 'Efectivo', NOW(), NULL, NULL, 7, NULL),
+(48, 'Tarjeta', NOW(), NULL, NULL, 8, NULL),
+(49, 'Transferencia', NOW(), NULL, NULL, 9, NULL),
+(50, 'Efectivo', NOW(), NULL, NULL, 10, NULL),
+(51, 'Tarjeta', NOW(), NULL, NULL, 11, NULL),
+(52, 'Transferencia', NOW(), NULL, NULL, 12, NULL),
+(53, 'Efectivo', NOW(), NULL, NULL, 13, NULL),
+(54, 'Tarjeta', NOW(), NULL, NULL, 14, NULL),
+(55, 'Transferencia', NOW(), NULL, NULL, 15, NULL),
+(56, 'Efectivo', NOW(), NULL, NULL, 16, NULL),
+(57, 'Tarjeta', NOW(), NULL, NULL, 17, NULL),
+(58, 'Transferencia', NOW(), NULL, NULL, 18, NULL),
+(59, 'Efectivo', NOW(), NULL, NULL, 19, NULL),
+(60, 'Tarjeta', NOW(), NULL, NULL, 20, NULL);
+

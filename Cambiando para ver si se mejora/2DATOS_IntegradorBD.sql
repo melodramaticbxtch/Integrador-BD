@@ -487,6 +487,102 @@ VALUES
 /* 60 */ (60, 70, NULL, 175750.00, '2026-01-12 16:00:00', DATE_ADD('2026-01-12 16:00:00', INTERVAL 24 MONTH), 0.65, 24, 'Refinanciado', '2026-01-12 16:00:00', NULL, NULL, 1, NULL);
 
 /*TABLA HISTORIAL DE TASAS*/
+USE financiamiento_kg;
+INSERT INTO Historial_de_tasas (id_producto_financiero, tasa, fecha_inicio, fecha_fin, fecha_de_alta, fecha_de_baja, fecha_de_modificacion, creado_por, modificado_por) VALUES
+
+-- Bloque 1: Productos 1-40 (40 registros actuales, una sola entrada por producto)
+-- Datos generados con base en las tasas base de Producto_financiero y fechas recientes.
+-- Préstamos Personales (id 1-10)
+(1, 0.55, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 54, NULL),
+(2, 0.39, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 50, NULL),
+(3, 0.66, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 46, NULL),
+(4, 0.48, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 42, NULL),
+(5, 0.71, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 38, NULL),
+(6, 0.57, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 34, NULL),
+(7, 0.75, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 30, NULL),
+(8, 0.60, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 26, NULL),
+(9, 0.46, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 22, NULL),
+(10, 0.34, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 21, NULL),
+
+-- Hipotecarios y Garantizados (id 11-20)
+(11, 0.26, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 20, NULL),
+(12, 0.28, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 8, NULL),
+(13, 0.31, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 4, NULL),
+(14, 0.37, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 61, NULL),
+(15, 0.32, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 57, NULL),
+(16, 0.43, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 53, NULL),
+(17, 0.15, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 49, NULL),
+(18, 0.67, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 45, NULL),
+(19, 0.36, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 41, NULL),
+(20, 0.50, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 37, NULL),
+
+-- Productos Empresariales (id 21-30)
+(21, 0.30, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 37, NULL),
+(22, 0.21, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 33, NULL),
+(23, 0.23, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 29, NULL),
+(24, 0.24, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 25, NULL),
+(25, 0.17, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 19, NULL),
+(26, 0.39, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 18, NULL),
+(27, 0.26, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 17, NULL),
+(28, 0.16, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 7, NULL),
+(29, 0.33, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 3, NULL),
+(30, 0.18, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 60, NULL),
+
+-- Variaciones de Personales/Otros (id 31-40)
+(31, 0.50, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 52, NULL),
+(32, 0.44, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 48, NULL),
+(33, 0.42, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 44, NULL),
+(34, 0.53, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 40, NULL),
+(35, 0.65, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 36, NULL),
+(36, 0.69, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 32, NULL),
+(37, 0.77, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 28, NULL),
+(38, 0.10, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 24, NULL),
+(39, 0.84, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 16, NULL),
+(40, 0.40, '2024-01-01 09:00:00', NULL, '2023-12-30 08:00:00', NULL, NULL, 15, NULL),
+
+-- Bloque 2: Productos 41-50 (20 registros, 2 entradas por producto para historial)
+-- Tasa 1: Antigua (fecha_fin establecida) | Tasa 2: Actual (fecha_fin NULL)
+
+-- Producto 41: Hipotecario Cliente Preferencial (Base 0.23)
+(41, 0.25, '2023-05-01 09:00:00', '2024-04-30 23:59:59', '2023-04-29 08:00:00', NULL, '2024-04-30 08:00:00', 14, 14), -- Antigua
+(41, 0.23, '2024-05-01 09:00:00', NULL, '2024-04-30 08:00:00', NULL, NULL, 14, NULL), -- Actual
+
+-- Producto 42: Línea de Crédito Pyme Flexible (Base 0.28)
+(42, 0.30, '2023-05-01 09:00:00', '2024-04-30 23:59:59', '2023-04-29 08:00:00', NULL, '2024-04-30 08:00:00', 10, 10), -- Antigua
+(42, 0.27, '2024-05-01 09:00:00', NULL, '2024-04-30 08:00:00', NULL, NULL, 10, NULL), -- Actual
+
+-- Producto 43: Crédito Prendario Motos (Base 0.55)
+(43, 0.58, '2023-07-01 09:00:00', '2024-06-30 23:59:59', '2023-06-29 08:00:00', NULL, '2024-06-30 08:00:00', 6, 5), -- Antigua
+(43, 0.54, '2024-07-01 09:00:00', NULL, '2024-06-30 08:00:00', NULL, NULL, 5, NULL), -- Actual
+
+-- Producto 44: Fianza de Alquiler Comercial (Base 0.45)
+(44, 0.47, '2023-08-01 09:00:00', '2024-03-31 23:59:59', '2023-07-30 08:00:00', NULL, '2024-03-31 08:00:00', 2, 59), -- Antigua
+(44, 0.45, '2024-04-01 09:00:00', NULL, '2024-03-31 08:00:00', NULL, NULL, 59, NULL), -- Actual
+
+-- Producto 45: Crédito para Exportación Directa (Base 0.16)
+(45, 0.18, '2023-01-01 09:00:00', '2024-01-31 23:59:59', '2022-12-30 08:00:00', NULL, '2024-01-31 08:00:00', 59, 59), -- Antigua
+(45, 0.15, '2024-02-01 09:00:00', NULL, '2024-01-31 08:00:00', NULL, NULL, 59, NULL), -- Actual
+
+-- Producto 46: Préstamo Capitalización Rural (Base 0.20)
+(46, 0.21, '2023-03-01 09:00:00', '2024-03-31 23:59:59', '2023-02-28 08:00:00', NULL, '2024-03-31 08:00:00', 55, 55), -- Antigua
+(46, 0.20, '2024-04-01 09:00:00', NULL, '2024-03-31 08:00:00', NULL, NULL, 55, NULL), -- Actual
+
+-- Producto 47: Hipotecario Segunda Vivienda (Base 0.35)
+(47, 0.37, '2023-06-01 09:00:00', '2024-05-31 23:59:59', '2023-05-30 08:00:00', NULL, '2024-05-31 08:00:00', 51, 51), -- Antigua
+(47, 0.34, '2024-06-01 09:00:00', NULL, '2024-05-31 08:00:00', NULL, NULL, 51, NULL), -- Actual
+
+-- Producto 48: Préstamo Refuerzo (Base 0.62)
+(48, 0.65, '2023-11-01 09:00:00', '2024-07-31 23:59:59', '2023-10-30 08:00:00', NULL, '2024-07-31 08:00:00', 47, 47), -- Antigua
+(48, 0.60, '2024-08-01 09:00:00', NULL, '2024-07-31 08:00:00', NULL, NULL, 47, NULL), -- Actual
+
+-- Producto 49: Descuento de E-Cheqs (Base 0.23)
+(49, 0.25, '2023-10-01 09:00:00', '2024-02-29 23:59:59', '2023-09-30 08:00:00', NULL, '2024-02-29 08:00:00', 43, 43), -- Antigua
+(49, 0.24, '2024-03-01 09:00:00', NULL, '2024-02-29 08:00:00', NULL, NULL, 43, NULL), -- Actual
+
+-- Producto 50: Garantía de Cumplimiento (Base 0.17)
+(50, 0.19, '2023-02-01 09:00:00', '2024-02-29 23:59:59', '2023-01-30 08:00:00', NULL, '2024-02-29 08:00:00', 39, 39), -- Antigua
+(50, 0.17, '2024-03-01 09:00:00', NULL, '2024-02-29 08:00:00', NULL, NULL, 39, NULL); -- Actual
+
 /*TABLA CUOTAS*/
 INSERT INTO Cuota (id_credito, numero_cuota, fecha_de_emision, fecha_de_vencimiento, monto_total, estado, fecha_de_alta, creado_por, modificado_por)
 VALUES

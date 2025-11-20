@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS Producto_campana (
     fecha_inicio TIMESTAMP,
     fecha_de_alta TIMESTAMP,
     fecha_de_baja TIMESTAMP,
-    fecha_modificacion TIMESTAMP,
+    fecha_de_modificacion TIMESTAMP,
     creado_por INT,
     modificado_por INT
 );
