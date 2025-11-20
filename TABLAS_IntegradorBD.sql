@@ -123,7 +123,6 @@ CREATE TABLE IF NOT EXISTS Cliente_campana (
 
 CREATE TABLE IF NOT EXISTS Credito (
     id_credito INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_cliente INT NOT NULL,
     id_producto_financiero INT NOT NULL,
     id_solicitud INT NOT NULL,
     id_credito_padre INT,
