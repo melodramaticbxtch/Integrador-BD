@@ -1,4 +1,4 @@
-USE financiamiento_kg;
+USE financiamiento_version7;
 /*TABLA SUCURSAL*/
 INSERT INTO Sucursal (nombre_sucursal, localidad, provincia, telefono_sucursal, direccion, fecha_de_alta, creado_por) VALUES
 ('Sucursal Salta Capital', 'Salta', 'Salta', '0387-431-0032', 'Florida 100', '2023-01-20 10:00:00', 'Sistema'),

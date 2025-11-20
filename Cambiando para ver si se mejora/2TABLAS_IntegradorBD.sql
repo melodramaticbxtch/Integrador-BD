@@ -1,18 +1,18 @@
 /*CREACION DE LAS TABLAS*/
-CREATE DATABASE financiamiento_kg;
-USE financiamiento_kg;
+/*CREATE DATABASE financiamiento_version7;*/
+USE financiamiento_version7;
 /*USERS*/
-/* 1) USUARIO ADMINISTRADOR – acceso total */
-CREATE USER 'admin_finanzas'@'%' IDENTIFIED BY 'Admin123!';
+/* 
+CREATE USER '2admin_finanzas'@'%' IDENTIFIED BY 'Admin123!';
 GRANT ALL PRIVILEGES ON financiamiento_kg.* TO 'admin_finanzas'@'%';
 
-/* 2) USUARIO EDITOR – solo INSERT, UPDATE y SELECT (sin DROP, DELETE ni CREATE) */
-CREATE USER 'editor_finanzas'@'%' IDENTIFIED BY 'Editor123!';
+
+CREATE USER '2editor_finanzas'@'%' IDENTIFIED BY 'Editor123!';
 GRANT SELECT, INSERT, UPDATE ON financiamiento_kg.* TO 'editor_finanzas'@'%';
 
-/* 3) USUARIO LECTOR – solo lectura */
-CREATE USER 'lector_finanzas'@'%' IDENTIFIED BY 'Lector123!';
-GRANT SELECT ON financiamiento_kg.* TO 'lector_finanzas'@'%';
+
+CREATE USER '2lector_finanzas'@'%' IDENTIFIED BY 'Lector123!';
+GRANT SELECT ON financiamiento_kg.* TO 'lector_finanzas'@'%';*/
 
 /* Aplicar cambios */
 FLUSH PRIVILEGES;
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS Cliente_campana (
 
 CREATE TABLE IF NOT EXISTS Credito (
     id_credito INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_producto_financiero INT NOT NULL,
+    id_producto_financiero INT,
     id_solicitud INT NOT NULL,
     id_credito_padre INT,
     monto_otorgado DECIMAL,
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS Historial_de_tasas (
 
 CREATE TABLE IF NOT EXISTS Cuota (
     id_cuota INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_credito INT NOT NULL,
+    id_credito INT,
     numero_cuota INT,
     fecha_de_emision TIMESTAMP,
     fecha_de_vencimiento TIMESTAMP,
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS Cuota (
 
 CREATE TABLE IF NOT EXISTS Pago (
     id_pago INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    id_cuota INT NOT NULL,
+    id_cuota INT,
     fecha_de_pago TIMESTAMP,
     monto_pagado DECIMAL,
     demora INT,

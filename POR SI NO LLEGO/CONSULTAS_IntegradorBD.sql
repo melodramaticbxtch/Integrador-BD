@@ -324,6 +324,15 @@ SELECT
 FROM Cliente c
 HAVING promedio_pago > total_creditos * 0.8;
 
+/*Ranking por puntaje riesgo*/
+SELECT 
+    c.id_cliente,
+    c.nombre_cliente,
+    AVG(s.puntaje_riesgo) AS riesgo_promedio,
+    RANK() OVER (ORDER BY AVG(puntaje_riesgo) DESC) AS ranking_riesgo
+FROM Cliente c
+JOIN Solicitud s ON c.id_cliente = s.id_cliente
+GROUP BY c.id_cliente;
 
 
 
